@@ -1632,7 +1632,7 @@
     display: flex;
     gap: 20px;
     width: max-content;
-    transition: transform 0.5s ease;
+    transition: transform 0.9s ease;
     animation: slide 30s linear infinite;
 }
 
@@ -4209,26 +4209,6 @@
     .slider-btn.next {
         right: 10px !important;
         left: auto !important;
-    }
-}
-/* Force hardware acceleration for smoother animation */
-.slider-track {
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000;
-    will-change: transform;
-}
-
-/* Fix for mobile infinite loop */
-@media (max-width: 768px) {
-    .slider-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .slider-track {
-        transition: transform 0.3s ease-out;
-        animation: slide 30s linear infinite;
     }
 }
 
