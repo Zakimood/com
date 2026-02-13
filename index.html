@@ -4260,6 +4260,41 @@
     position: relative;
     z-index: 2;
 }
+
+/* ---------- DECORATIVE SLIDER · HERO CAROUSEL ---------- */
+        .hero-slider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .slider-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 100%;
+            display: flex;
+            animation: slide 30s linear infinite;
+            opacity: 0.1;
+        }
+        
+        .slider-item {
+            width: 33.333%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) grayscale(100%);
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-66.666%); }
+        }
     </style>
 </head>
 <body>
@@ -4343,13 +4378,17 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Particle Network Animation -->
-<section id="home" class="hero section">
-    <!-- Animated Particle Network Background -->
-    <div class="hero-animated-bg">
-        <canvas id="particle-canvas"></canvas>
+    <section class="hero">
+    <div class="hero-slider">
+        <div class="slider-track">
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large');"></div>
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large');"></div>
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/GtRJjqbXMAAVoy2?format=jpg&name=large');"></div>
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large');"></div>
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large');"></div>
+            <div class="slider-item" style="background-image: url('https://pbs.twimg.com/media/GtRJjqbXMAAVoy2?format=jpg&name=large');"></div>
+        </div>
     </div>
-    <div class="hero-bg"></div>
     <div class="container">
         <div class="hero-content">
             <h1 class="hero-title animate__animated animate__fadeInUp">
