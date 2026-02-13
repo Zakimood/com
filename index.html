@@ -9966,6 +9966,122 @@ window.addEventListener('resize', generateParticles);
         }
     });
 })();
+
+// ===== SIMPLE MOBILE SLIDER LOOP =====
+// This makes the slider move automatically on mobile only
+(function initMobileSliderLoop() {
+    // Only run on mobile devices
+    const isMobile = window.innerWidth <= 768;
+    
+    if (!isMobile) {
+        console.log('Desktop detected - slider will NOT auto-scroll');
+        return; // Don't run on desktop
+    }
+    
+    console.log('Mobile detected - starting slow slider loop');
+    
+    const sliderTrack = document.querySelector('.slider-track');
+    const sliderContainer = document.querySelector('.slider-container');
+    
+    if (!sliderTrack || !sliderContainer) {
+        console.log('Slider elements not found');
+        return;
+    }
+    
+    // Stop any existing CSS animation
+    sliderTrack.style.animation = 'none';
+    
+    // Variables for smooth scrolling
+    let scrollPosition = 0;
+    let scrollDirection = 1; // 1 = right, -1 = left
+    let animationId = null;
+    let isPaused = false;
+    
+    // Calculate card width + gap
+    const cardWidth = document.querySelector('.slider-card')?.offsetWidth || 260;
+    const gap = 20; // matches gap in CSS
+    const scrollAmount = cardWidth + gap;
+    
+    // Get total width of track
+    const getTrackWidth = () => {
+        const cards = document.querySelectorAll('.slider-card');
+        return cards.length * scrollAmount;
+    };
+    
+    // Slow scroll function (runs on mobile only)
+    function slowScroll() {
+        if (!isPaused && sliderContainer) {
+            // Move scroll position slowly
+            scrollPosition += 0.35 * scrollDirection; // Very slow speed
+            
+            // Get container width and track width
+            const containerWidth = sliderContainer.offsetWidth;
+            const trackWidth = getTrackWidth();
+            const maxScroll = trackWidth - containerWidth;
+            
+            // Reverse direction when reaching ends
+            if (scrollPosition <= 0) {
+                scrollPosition = 0;
+                scrollDirection = 1;
+            } else if (scrollPosition >= maxScroll) {
+                scrollPosition = maxScroll;
+                scrollDirection = -1;
+            }
+            
+            // Apply scroll position
+            sliderContainer.scrollLeft = scrollPosition;
+        }
+        
+        // Continue animation
+        animationId = requestAnimationFrame(slowScroll);
+    }
+    
+    // Pause on hover/touch
+    sliderContainer.addEventListener('mouseenter', () => {
+        if (isMobile) isPaused = true;
+    });
+    
+    sliderContainer.addEventListener('mouseleave', () => {
+        if (isMobile) isPaused = false;
+    });
+    
+    // Also pause on touch for mobile
+    sliderContainer.addEventListener('touchstart', () => {
+        if (isMobile) isPaused = true;
+    });
+    
+    sliderContainer.addEventListener('touchend', () => {
+        if (isMobile) isPaused = false;
+    });
+    
+    // Start the animation
+    animationId = requestAnimationFrame(slowScroll);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+        }
+    });
+    
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        const isNowMobile = window.innerWidth <= 768;
+        
+        // Stop animation if switching to desktop
+        if (!isNowMobile && animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+            sliderTrack.style.animation = ''; // Restore CSS animation if any
+        }
+        
+        // Restart if switching to mobile
+        if (isNowMobile && !animationId) {
+            scrollPosition = sliderContainer.scrollLeft;
+            animationId = requestAnimationFrame(slowScroll);
+        }
+    });
+})();
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a29d3b8d5c2f4c238a79e43e5b52e90d"}'></script><!-- End Cloudflare Web Analytics -->
      <!-- Floating WhatsApp Button -->
