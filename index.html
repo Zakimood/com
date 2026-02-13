@@ -1632,7 +1632,7 @@
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: slide 190s linear infinite;
+    animation: slide 30s linear infinite;
 }
 
 .slider-card {
@@ -4276,6 +4276,146 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-66.666%); }
         }
+
+        /* ===== SIMPLE SLIDER CSS (No animations) ===== */
+.featured-slider {
+    margin: 40px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 1rem;
+}
+
+.slider-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.slider-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(26,30,36,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139,92,246,0.5);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: linear-gradient(45deg, #8b5cf6, #ec4899);
+    border-color: transparent;
+    box-shadow: 0 0 30px rgba(139,92,246,0.5);
+}
+
+.slider-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 28px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto; /* Important: prevents CSS smooth scrolling */
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: none !important; /* Remove any CSS animations */
+}
+
+.slider-card {
+    flex: 0 0 300px;
+    background: rgba(26, 30, 36, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s;
+}
+
+.slider-card:hover {
+    transform: translateY(-8px);
+    border-color: #8b5cf6;
+    box-shadow: 0 20px 40px rgba(139,92,246,0.3);
+}
+
+.slider-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.slider-card-content {
+    padding: 20px;
+}
+
+.slider-card-content h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.slider-username {
+    color: #8b5cf6;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.slider-followers {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+    .slider-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .slider-controls {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .slider-btn {
+        width: 48px !important;
+        height: 48px !important;
+        background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+        border: 2px solid white !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    }
+    
+    .slider-card {
+        flex: 0 0 260px;
+    }
+    
+    .slider-card img {
+        height: 160px;
+    }
+}
     </style>
 </head>
 <body>
@@ -9757,6 +9897,150 @@ window.addEventListener('resize', generateParticles);
             animationId = requestAnimationFrame(slowScroll);
         }
     });
+})();
+
+// ===== INFINITE SLIDER LOOP (Works on both desktop & mobile) =====
+(function initInfiniteSlider() {
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderContainer = document.querySelector('.slider-container');
+    
+    if (!sliderTrack || !sliderContainer) {
+        console.log('Slider elements not found');
+        return;
+    }
+    
+    console.log('Initializing infinite slider loop for all devices');
+    
+    // Clone all cards to create seamless loop
+    const originalCards = Array.from(sliderTrack.children);
+    const cardCount = originalCards.length;
+    
+    // Clone each card and append to track
+    originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        sliderTrack.appendChild(clone);
+    });
+    
+    // Also clone a third set for extra smoothness on fast devices
+    originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        sliderTrack.appendChild(clone);
+    });
+    
+    // Variables
+    let scrollPosition = 0;
+    let animationId = null;
+    let isPaused = false;
+    let speed = 0.5; // Scroll speed (adjust as needed)
+    
+    // Calculate card width including gap
+    const getCardWidth = () => {
+        const firstCard = sliderTrack.querySelector('.slider-card');
+        if (!firstCard) return 280; // fallback
+        
+        const style = window.getComputedStyle(firstCard);
+        const width = firstCard.offsetWidth;
+        const gap = 20; // matches CSS gap
+        return width + gap;
+    };
+    
+    // Get total width of one set of original cards
+    const getOriginalSetWidth = () => {
+        return cardCount * getCardWidth();
+    };
+    
+    // Smooth scroll function
+    function smoothScroll() {
+        if (!isPaused && sliderContainer) {
+            // Move scroll position
+            scrollPosition += speed;
+            
+            // Get container width
+            const containerWidth = sliderContainer.offsetWidth;
+            const originalSetWidth = getOriginalSetWidth();
+            
+            // Reset when we've scrolled through one complete set
+            // This creates the infinite loop illusion
+            if (scrollPosition >= originalSetWidth) {
+                scrollPosition = 0;
+                // Instantly jump back without animation
+                sliderContainer.scrollLeft = 0;
+            } else {
+                sliderContainer.scrollLeft = scrollPosition;
+            }
+        }
+        
+        // Continue animation
+        animationId = requestAnimationFrame(smoothScroll);
+    }
+    
+    // Pause on hover/touch (for better UX)
+    sliderContainer.addEventListener('mouseenter', () => {
+        isPaused = true;
+    });
+    
+    sliderContainer.addEventListener('mouseleave', () => {
+        isPaused = false;
+    });
+    
+    // Pause on touch for mobile
+    sliderContainer.addEventListener('touchstart', () => {
+        isPaused = true;
+    });
+    
+    sliderContainer.addEventListener('touchend', () => {
+        isPaused = false;
+    });
+    
+    // Pause when user manually scrolls
+    sliderContainer.addEventListener('scroll', () => {
+        // User is manually scrolling, pause auto-scroll
+        isPaused = true;
+        
+        // Resume after 2 seconds of no scrolling
+        clearTimeout(sliderContainer.scrollTimeout);
+        sliderContainer.scrollTimeout = setTimeout(() => {
+            isPaused = false;
+        }, 2000);
+    });
+    
+    // Adjust speed based on device
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        speed = 0.4; // Slightly slower on mobile for better UX
+    }
+    
+    // Start the animation
+    animationId = requestAnimationFrame(smoothScroll);
+    
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+        // Reset position on resize to avoid issues
+        scrollPosition = 0;
+        sliderContainer.scrollLeft = 0;
+        
+        // Adjust speed based on new device size
+        speed = window.innerWidth <= 768 ? 0.4 : 0.5;
+    });
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+        }
+    });
+    
+    // Add CSS to ensure smooth scrolling
+    const style = document.createElement('style');
+    style.textContent = `
+        .slider-container {
+            scroll-behavior: auto !important; /* Prevent CSS smooth scrolling interference */
+        }
+        .slider-track {
+            animation: none !important; /* Override any CSS animations */
+        }
+    `;
+    document.head.appendChild(style);
 })();
     </script>
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a29d3b8d5c2f4c238a79e43e5b52e90d"}'></script><!-- End Cloudflare Web Analytics -->
