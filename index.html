@@ -4229,91 +4229,6 @@
         transition: transform 0.3s ease-out;
     }
 }
-/* ===== MOBILE SLIDER OPTIMIZATIONS ===== */
-@media (max-width: 768px) {
-    /* Make trending profiles smaller on mobile */
-    .slider-card {
-        flex: 0 0 220px !important;
-        border-radius: 20px !important;
-    }
-    
-    .slider-card img {
-        height: 140px !important;
-    }
-    
-    .slider-card-content {
-        padding: 15px !important;
-    }
-    
-    .slider-card-content h3 {
-        font-size: 16px !important;
-        margin-bottom: 3px !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .slider-username {
-        font-size: 12px !important;
-        margin-bottom: 5px !important;
-    }
-    
-    .slider-followers {
-        font-size: 11px !important;
-    }
-    
-    /* Make navigation buttons visible and tappable */
-    .slider-controls {
-        display: flex !important;
-        gap: 10px !important;
-        margin-left: auto !important;
-    }
-    
-    .slider-btn {
-        width: 44px !important;
-        height: 44px !important;
-        background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
-        border: 2px solid white !important;
-        border-radius: 50% !important;
-        color: white !important;
-        font-size: 18px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
-    }
-    
-    /* Remove absolute positioning from previous attempt */
-    .slider-btn.prev,
-    .slider-btn.next {
-        position: static !important;
-        transform: none !important;
-    }
-    
-    /* Adjust header for mobile */
-    .slider-header {
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 10px !important;
-        margin-bottom: 15px !important;
-    }
-    
-    .slider-header h2 {
-        font-size: 20px !important;
-        margin: 0 !important;
-    }
-    
-    /* Ensure smooth scrolling */
-    .slider-container {
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: auto !important;
-    }
-    
-    .slider-track {
-        transition: transform 0.3s ease-out !important;
-        will-change: transform !important;
-    }
-}
     </style>
 </head>
 <body>
@@ -4424,14 +4339,10 @@
         </div>
     </section>
     
-    
-    <!-- ===== UPDATED SLIDER - COMPLETELY REWRITTEN FOR MOBILE ===== -->
-<div class="featured-slider">
+    <div class="featured-slider">
     <div class="slider-header">
-        <h2 style="font-size: 28px; font-weight: 800; letter-spacing: -1px;">🔥TRENDING</h2>
+        <h2 style="font-size: 28px; font-weight: 800; letter-spacing: -1px;">🔥 TRENDING CREATORS</h2>
         <div class="slider-controls">
-            <button class="slider-btn prev" onclick="slidePrev()"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn next" onclick="slideNext()"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
     
@@ -4519,7 +4430,7 @@
                 </div>
             </div>
             <!-- DUPLICATE CARDS FOR INFINITE LOOP -->
-            <!-- Card 1 duplicate -->
+            <!-- Card 1 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large" alt="creator">
                 <div class="slider-card-content">
@@ -4528,7 +4439,7 @@
                     <p class="slider-followers">1.2M followers</p>
                 </div>
             </div>
-            <!-- Card 2 duplicate -->
+            <!-- Card 2 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large" alt="creator">
                 <div class="slider-card-content">
@@ -4537,7 +4448,7 @@
                     <p class="slider-followers">885K followers</p>
                 </div>
             </div>
-            <!-- Card 3 duplicate -->
+            <!-- Card 3 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/GyJf5TMXYAAmiKQ?format=jpg&name=large" alt="creator">
                 <div class="slider-card-content">
@@ -4546,7 +4457,7 @@
                     <p class="slider-followers">1.2M followers</p>
                 </div>
             </div>
-            <!-- Card 4 duplicate -->
+            <!-- Card 4 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G4cypUcX0AAy6E4?format=jpg&name=medium" alt="creator">
                 <div class="slider-card-content">
@@ -4555,7 +4466,7 @@
                     <p class="slider-followers">523K followers</p>
                 </div>
             </div>
-            <!-- Card 5 duplicate -->
+            <!-- Card 5 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G0R6YJJXYAE51LF?format=jpg&name=large" alt="creator">
                 <div class="slider-card-content">
@@ -4564,7 +4475,7 @@
                     <p class="slider-followers">678K followers</p>
                 </div>
             </div>
-            <!-- Card 6 duplicate -->
+            <!-- Card 6 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/HAx_G3tWgAEnIeH?format=jpg&name=large" alt="creator">
                 <div class="slider-card-content">
@@ -4573,7 +4484,7 @@
                     <p class="slider-followers">678K followers</p>
                 </div>
             </div>
-            <!-- Card 7 duplicate -->
+            <!-- Card 7 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G48ogypXIAAmfPy?format=jpg&name=medium" alt="creator">
                 <div class="slider-card-content">
@@ -4582,7 +4493,7 @@
                     <p class="slider-followers">678K followers</p>
                 </div>
             </div>
-            <!-- Card 8 duplicate -->
+            <!-- Card 8 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G_nDnMGWkAAcOc6?format=jpg&name=4096x4096" alt="creator">
                 <div class="slider-card-content">
@@ -4591,7 +4502,332 @@
                     <p class="slider-followers">678K followers</p>
                 </div>
             </div>
-            <!-- Card 9 duplicate -->
+            <!-- Card 9 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G7uYGasW8AAs0Km?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Queen Diva</h3>
+                    <p class="slider-username">@realqueendiva</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 1 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Miss Pearline 🍒</h3>
+                    <p class="slider-username">@Miss_Pearline</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Caramel Mocha 🌸</h3>
+                    <p class="slider-username">@caramellmocha69</p>
+                    <p class="slider-followers">885K followers</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/GyJf5TMXYAAmiKQ?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Seductress💦🍭</h3>
+                    <p class="slider-username">@Passionstars_</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G4cypUcX0AAy6E4?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>🦋Main🦋</h3>
+                    <p class="slider-username">@Main_lifestyle</p>
+                    <p class="slider-followers">523K followers</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G0R6YJJXYAE51LF?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>𝖡υ𐓣𐓣ɣ 𝗀ꪱ𝗋ᥣ🐇ྀི</h3>
+                    <p class="slider-username">@bubblebuttqutie</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/HAx_G3tWgAEnIeH?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Gray Africana 🔞</h3>
+                    <p class="slider-username">@gray_africana</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G48ogypXIAAmfPy?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Autumn’s Secret🍒</h3>
+                    <p class="slider-username">@callherautumn</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_nDnMGWkAAcOc6?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Di_a_na._💝</h3>
+                    <p class="slider-username">@di_a_na7</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G7uYGasW8AAs0Km?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Queen Diva</h3>
+                    <p class="slider-username">@realqueendiva</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 1 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Miss Pearline 🍒</h3>
+                    <p class="slider-username">@Miss_Pearline</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Caramel Mocha 🌸</h3>
+                    <p class="slider-username">@caramellmocha69</p>
+                    <p class="slider-followers">885K followers</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/GyJf5TMXYAAmiKQ?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Seductress💦🍭</h3>
+                    <p class="slider-username">@Passionstars_</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G4cypUcX0AAy6E4?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>🦋Main🦋</h3>
+                    <p class="slider-username">@Main_lifestyle</p>
+                    <p class="slider-followers">523K followers</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G0R6YJJXYAE51LF?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>𝖡υ𐓣𐓣ɣ 𝗀ꪱ𝗋ᥣ🐇ྀི</h3>
+                    <p class="slider-username">@bubblebuttqutie</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/HAx_G3tWgAEnIeH?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Gray Africana 🔞</h3>
+                    <p class="slider-username">@gray_africana</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G48ogypXIAAmfPy?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Autumn’s Secret🍒</h3>
+                    <p class="slider-username">@callherautumn</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_nDnMGWkAAcOc6?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Di_a_na._💝</h3>
+                    <p class="slider-username">@di_a_na7</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G7uYGasW8AAs0Km?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Queen Diva</h3>
+                    <p class="slider-username">@realqueendiva</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- DUPLICATE CARDS FOR INFINITE LOOP -->
+            <!-- Card 1 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Miss Pearline 🍒</h3>
+                    <p class="slider-username">@Miss_Pearline</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Caramel Mocha 🌸</h3>
+                    <p class="slider-username">@caramellmocha69</p>
+                    <p class="slider-followers">885K followers</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/GyJf5TMXYAAmiKQ?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Seductress💦🍭</h3>
+                    <p class="slider-username">@Passionstars_</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G4cypUcX0AAy6E4?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>🦋Main🦋</h3>
+                    <p class="slider-username">@Main_lifestyle</p>
+                    <p class="slider-followers">523K followers</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G0R6YJJXYAE51LF?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>𝖡υ𐓣𐓣ɣ 𝗀ꪱ𝗋ᥣ🐇ྀི</h3>
+                    <p class="slider-username">@bubblebuttqutie</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/HAx_G3tWgAEnIeH?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Gray Africana 🔞</h3>
+                    <p class="slider-username">@gray_africana</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G48ogypXIAAmfPy?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Autumn’s Secret🍒</h3>
+                    <p class="slider-username">@callherautumn</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_nDnMGWkAAcOc6?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Di_a_na._💝</h3>
+                    <p class="slider-username">@di_a_na7</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G7uYGasW8AAs0Km?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Queen Diva</h3>
+                    <p class="slider-username">@realqueendiva</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 1 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_RwcQnWgAEVn_2?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Miss Pearline 🍒</h3>
+                    <p class="slider-username">@Miss_Pearline</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G5FnpoxWIAAEEDp?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Caramel Mocha 🌸</h3>
+                    <p class="slider-username">@caramellmocha69</p>
+                    <p class="slider-followers">885K followers</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/GyJf5TMXYAAmiKQ?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Seductress💦🍭</h3>
+                    <p class="slider-username">@Passionstars_</p>
+                    <p class="slider-followers">1.2M followers</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G4cypUcX0AAy6E4?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>🦋Main🦋</h3>
+                    <p class="slider-username">@Main_lifestyle</p>
+                    <p class="slider-followers">523K followers</p>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G0R6YJJXYAE51LF?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>𝖡υ𐓣𐓣ɣ 𝗀ꪱ𝗋ᥣ🐇ྀི</h3>
+                    <p class="slider-username">@bubblebuttqutie</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/HAx_G3tWgAEnIeH?format=jpg&name=large" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Gray Africana 🔞</h3>
+                    <p class="slider-username">@gray_africana</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G48ogypXIAAmfPy?format=jpg&name=medium" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Autumn’s Secret🍒</h3>
+                    <p class="slider-username">@callherautumn</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="slider-card">
+                <img src="https://pbs.twimg.com/media/G_nDnMGWkAAcOc6?format=jpg&name=4096x4096" alt="creator">
+                <div class="slider-card-content">
+                    <h3>Di_a_na._💝</h3>
+                    <p class="slider-username">@di_a_na7</p>
+                    <p class="slider-followers">678K followers</p>
+                </div>
+            </div>
+            <!-- Card 9 -->
             <div class="slider-card">
                 <img src="https://pbs.twimg.com/media/G7uYGasW8AAs0Km?format=jpg&name=4096x4096" alt="creator">
                 <div class="slider-card-content">
@@ -9620,210 +9856,167 @@ function generateParticles() {
 window.addEventListener('load', generateParticles);
 window.addEventListener('resize', generateParticles);
 
-// ===== SLIDER - PERFECT MOBILE AUTO-SLIDE =====
+// ===== SLIDER - FORCED AUTO-SLIDE FOR MOBILE =====
 let currentPosition = 0;
 let autoSlideTimer;
-let isMobile = window.innerWidth <= 768;
-let userInteracted = false;
 
 function slideNext() {
     const track = document.getElementById('sliderTrack');
     if (!track) return;
     
-    // Mobile: smaller card width, Desktop: larger
-    const cardWidth = window.innerWidth <= 768 ? 220 : 300;
-    const gap = 20; // gap between cards
-    const scrollAmount = cardWidth + gap;
+    const cardWidth = window.innerWidth <= 768 ? 280 : 320;
+    const totalWidth = track.scrollWidth;
+    const containerWidth = track.parentElement.offsetWidth;
+    const maxScroll = totalWidth - containerWidth;
     
-    currentPosition += scrollAmount;
+    currentPosition += cardWidth;
     
-    // Reset to beginning smoothly when reaching the end
-    if (currentPosition >= track.scrollWidth - track.parentElement.offsetWidth) {
-        // Smooth transition to beginning
-        setTimeout(() => {
-            track.style.transition = 'none';
-            currentPosition = 0;
-            track.style.transform = `translateX(0px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease';
-            }, 50);
-        }, 500);
+    // Reset to beginning when reaching the end
+    if (currentPosition >= maxScroll) {
+        currentPosition = 0;
+        track.style.transform = `translateX(-${currentPosition}px)`;
+    } else {
+        track.style.transform = `translateX(-${currentPosition}px)`;
     }
-    
-    track.style.transform = `translateX(-${currentPosition}px)`;
 }
 
 function slidePrev() {
     const track = document.getElementById('sliderTrack');
     if (!track) return;
     
-    const cardWidth = window.innerWidth <= 768 ? 220 : 300;
-    const gap = 20;
-    const scrollAmount = cardWidth + gap;
+    const cardWidth = window.innerWidth <= 768 ? 280 : 320;
+    const totalWidth = track.scrollWidth;
+    const containerWidth = track.parentElement.offsetWidth;
+    const maxScroll = totalWidth - containerWidth;
     
-    currentPosition -= scrollAmount;
+    currentPosition -= cardWidth;
     
     // Go to end when at the beginning
     if (currentPosition < 0) {
-        // Smooth transition to end
-        setTimeout(() => {
-            track.style.transition = 'none';
-            currentPosition = track.scrollWidth - track.parentElement.offsetWidth;
-            track.style.transform = `translateX(-${currentPosition}px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease';
-            }, 50);
-        }, 500);
+        currentPosition = maxScroll;
+        track.style.transform = `translateX(-${currentPosition}px)`;
+    } else {
+        track.style.transform = `translateX(-${currentPosition}px)`;
     }
-    
-    track.style.transform = `translateX(-${currentPosition}px)`;
 }
 
-// Start auto-slide function
-function startAutoSlide() {
-    if (autoSlideTimer) clearInterval(autoSlideTimer);
+// ===== FORCE AUTO-SLIDE ON MOBILE USING REQUESTANIMATIONFRAME =====
+if (window.innerWidth <= 768) {
+    console.log('📱 Mobile detected - FORCING auto-slide');
     
-    // Different speeds for mobile and desktop
-    const intervalTime = window.innerWidth <= 768 ? 2500 : 3000;
+    // Method 1: Touch start forces immediate start
+    document.body.addEventListener('touchstart', function forceStart() {
+        console.log('👆 Touch detected - starting auto-slide');
+        
+        // Clear any existing timer
+        if (autoSlideTimer) clearInterval(autoSlideTimer);
+        
+        // Start interval
+        autoSlideTimer = setInterval(() => {
+            slideNext();
+        }, 2500);
+        
+        // Also trigger immediately
+        slideNext();
+        
+        // Remove listener
+        document.body.removeEventListener('touchstart', forceStart);
+    });
     
-    autoSlideTimer = setInterval(() => {
-        // Don't auto-slide if user is interacting with slider
-        if (!userInteracted) {
+    // Method 2: Try to start on page load (some browsers allow it)
+    setTimeout(() => {
+        if (!autoSlideTimer) {
+            console.log('⏰ Attempting to start auto-slide');
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
             slideNext();
         }
-    }, intervalTime);
-    
-    console.log('✅ Auto-slide started');
-}
-
-// Stop auto-slide
-function stopAutoSlide() {
-    if (autoSlideTimer) {
-        clearInterval(autoSlideTimer);
-        autoSlideTimer = null;
-        console.log('⏸️ Auto-slide paused');
-    }
-}
-
-// Handle user interaction
-function handleUserInteraction() {
-    userInteracted = true;
-    stopAutoSlide();
-    
-    // Resume after 5 seconds of no interaction
-    setTimeout(() => {
-        userInteracted = false;
-        startAutoSlide();
-    }, 5000);
-}
-
-// ===== ENHANCED MOBILE SLIDER WITH FORCED AUTO-SLIDE =====
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Initializing slider...');
-    
-    const sliderContainer = document.querySelector('.slider-container');
-    const track = document.getElementById('sliderTrack');
-    
-    if (!sliderContainer || !track) return;
-    
-    // Set initial transition
-    track.style.transition = 'transform 0.5s ease';
-    
-    // Start auto-slide after page load
-    setTimeout(() => {
-        startAutoSlide();
     }, 1000);
     
-    // Pause on hover/touch
+    // Method 3: Try again after 2 seconds
+    setTimeout(() => {
+        if (!autoSlideTimer) {
+            console.log('⏰ Second attempt to start auto-slide');
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
+            slideNext();
+        }
+    }, 2000);
+    
+    // Method 4: Try again after 3 seconds
+    setTimeout(() => {
+        if (!autoSlideTimer) {
+            console.log('⏰ Third attempt to start auto-slide');
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
+            slideNext();
+        }
+    }, 3000);
+    
+    // Method 5: Check every second if we need to restart
+    setInterval(() => {
+        if (!autoSlideTimer) {
+            console.log('🔄 Restarting auto-slide');
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
+        }
+    }, 5000);
+    
+    // Method 6: Force start on visibility change (when tab becomes active)
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            console.log('👁️ Tab active - ensuring auto-slide runs');
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
+        }
+    });
+    
+    // Method 7: Force start on scroll (another user interaction)
+    window.addEventListener('scroll', function once() {
+        if (!autoSlideTimer) {
+            console.log('📜 Scroll detected - starting auto-slide');
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 2500);
+            window.removeEventListener('scroll', once);
+        }
+    }, { once: true });
+    
+} else {
+    // Desktop: Start immediately
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, 3000);
+        }, 1000);
+    });
+}
+
+// Pause on hover
+const sliderContainer = document.querySelector('.slider-container');
+if (sliderContainer) {
     sliderContainer.addEventListener('mouseenter', () => {
-        stopAutoSlide();
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
+        }
     });
     
     sliderContainer.addEventListener('mouseleave', () => {
-        startAutoSlide();
-    });
-    
-    // Touch events for mobile
-    sliderContainer.addEventListener('touchstart', () => {
-        stopAutoSlide();
-        userInteracted = true;
-    });
-    
-    sliderContainer.addEventListener('touchend', () => {
-        setTimeout(() => {
-            userInteracted = false;
-            startAutoSlide();
-        }, 3000);
-    });
-    
-    // Manual navigation triggers user interaction
-    document.querySelectorAll('.slider-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            handleUserInteraction();
-        });
-    });
-    
-    // FORCE AUTO-SLIDE ON MOBILE - Multiple triggers
-    if (window.innerWidth <= 768) {
-        console.log('📱 Mobile detected - forcing auto-slide');
-        
-        // Method 1: Try on page load
-        setTimeout(() => {
-            if (!autoSlideTimer) {
-                startAutoSlide();
-            }
-        }, 500);
-        
-        // Method 2: Try on first touch anywhere
-        document.body.addEventListener('touchstart', function startOnTouch() {
-            console.log('👆 Touch detected - starting auto-slide');
-            startAutoSlide();
-            document.body.removeEventListener('touchstart', startOnTouch);
-        });
-        
-        // Method 3: Try on scroll (another user interaction)
-        window.addEventListener('scroll', function startOnScroll() {
-            console.log('📜 Scroll detected - starting auto-slide');
-            startAutoSlide();
-            window.removeEventListener('scroll', startOnScroll);
-        }, { once: true });
-        
-        // Method 4: Check periodically and restart if stopped
-        setInterval(() => {
-            if (!autoSlideTimer && document.visibilityState === 'visible') {
-                console.log('🔄 Restarting stopped auto-slide');
-                startAutoSlide();
-            }
-        }, 5000);
-    }
-    
-    // Update on resize
-    window.addEventListener('resize', function() {
-        const wasMobile = isMobile;
-        isMobile = window.innerWidth <= 768;
-        
-        // Reset position
-        currentPosition = 0;
-        track.style.transform = 'translateX(0px)';
-        
-        // Restart timer with new interval if needed
-        if (wasMobile !== isMobile) {
-            stopAutoSlide();
-            startAutoSlide();
+        if (!autoSlideTimer) {
+            autoSlideTimer = setInterval(() => {
+                slideNext();
+            }, window.innerWidth <= 768 ? 2500 : 3000);
         }
     });
-    
-    // Handle visibility change (tab switching)
-    document.addEventListener('visibilitychange', function() {
-        if (!document.hidden) {
-            // Tab became visible again
-            startAutoSlide();
-        } else {
-            // Tab hidden, pause to save resources
-            stopAutoSlide();
-        }
-    });
-});
+}
 
 // Make functions global
 window.slideNext = slideNext;
