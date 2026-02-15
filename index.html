@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Local Hearts · Accra · real miles</title>
-  <!-- Poppins & Inter modern fonts -->
+  <title>Local Hearts · specific profiles · 16 ready</title>
+  <!-- Poppins & Inter fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* reset & base — keep original romantic vibe + professional upgrades */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', 'Poppins', sans-serif;
@@ -77,14 +76,85 @@
       align-items: center;
       gap: 6px;
       border: 1px solid #ffe2ed;
+      max-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .filter-icon {
-      background: white;
-      border-radius: 50px;
-      padding: 10px 16px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* Ready to meet section - touch slide */
+    .meet-section {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 16px 12px;
+      margin: 20px 0 16px;
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 8px 20px rgba(255,120,180,0.15);
+    }
+    .meet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 0 8px;
+    }
+    .meet-header h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(130deg, #e3649e, #a585ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .meet-header span {
+      background: #ffd9e8;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .circle-container {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 4px 8px 12px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+    .circle-container::-webkit-scrollbar { display: none; }
+    .meet-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: transform 0.15s;
+      flex-shrink: 0;
+      width: 80px;
+      scroll-snap-align: start;
+    }
+    .meet-circle:active { transform: scale(0.95); }
+    .circle-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #ff85b3;
+      box-shadow: 0 6px 14px rgba(255,80,140,0.3);
+      transition: 0.2s;
+    }
+    .circle-name {
+      font-weight: 600;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 10px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+      white-space: nowrap;
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .card-stack {
       position: relative;
@@ -168,7 +238,6 @@
     }
     .action-btn.dislike { color: #f25e5e; }
     .action-btn.like { color: #42c6b2; background: #e3fffa; }
-
     .profile-view {
       display: none;
       margin-top: 8px;
@@ -214,7 +283,6 @@
       font-size: 1.3rem;
       justify-content: center;
     }
-    /* GALLERY + VIDEO GRID — 3 columns */
     .media-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -234,7 +302,7 @@
       background-color: #1a1a1a;
     }
     .grid-item.video-item::after {
-      content: '\f04b'; /* play icon */
+      content: '\f04b';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
@@ -349,7 +417,7 @@
     <div class="location-chip" id="locationChip"><i class="fas fa-location-dot" style="color:#ff5e8b;"></i> <span>Accra, Ghana</span></div>
   </div>
 
-  <!-- filter pills with Accra highlight -->
+  <!-- filter pills -->
   <div class="filter-bar">
     <span class="pill accra-highlight"><i class="fas fa-map-pin"></i> Accra (GH)</span>
     <span class="pill"><i class="fas fa-location-arrow"></i> within 15mi</span>
@@ -357,6 +425,18 @@
     <span class="pill"><i class="fas fa-video"></i> video grid</span>
   </div>
 
+  <!-- 🔥 READY TO MEET with 16 circles + touch slide -->
+  <div class="meet-section glass-card" id="meetSection">
+    <div class="meet-header">
+      <h3><i class="fas fa-hand-peace"></i> ready to meet · 16</h3>
+      <span>🔥 online now</span>
+    </div>
+    <div class="circle-container" id="circleContainer">
+      <!-- dynamically generated 16 circles -->
+    </div>
+  </div>
+
+  <!-- swipe stack -->
   <div id="stackContainer" class="card-stack"></div>
 
   <div class="swipe-actions">
@@ -384,13 +464,22 @@
 
 <script>
   (function() {
-    // ---------- ACCRA-FOCUSED PROFILES (all located in/near Accra) ----------
+    // ---------- SPECIFIC PROFILES (restored from first code with details) ----------
     const profiles = [
-      { id:1,name:'Zara',age:24,city:'Accra',bio:'Sunset chaser, coffee addict. Osu 🛹',img:'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
-        gallery:[
-          'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600',
-          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600',
-          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600'
+      {
+        id: 1,
+        name: 'Zara',
+        age: 24,
+        city: 'Lagos',
+        bio: 'Sunset chaser, coffee addict. Let’s explore the city together 🌆',
+        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format',
+          'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&auto=format'
         ],
         videos: [
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
@@ -398,13 +487,27 @@
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
           'https://player.vimeo.com/video/76979871?h=827fb9627c'
         ],
-        about:'Creative soul, love afrobeats.',interests:'Music, art, surfing',lookingFor:'Friendship → maybe more',onlineStatus:'online',whatsapp:'233201234567',
-        lat:5.5600, lng:-0.2050 }, // Osu, Accra
-      { id:2,name:'David',age:28,city:'Accra',bio:'Photographer & hiking buddy 📸 Shai Hills',img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600',
-        gallery:[
-          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600',
-          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600',
-          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600'
+        about: 'Creative soul, love afrobeats and open mics.',
+        interests: 'Music, art, surfing, vegan food',
+        lookingFor: 'Friendship → maybe more',
+        onlineStatus: 'online',
+        whatsapp: '234812345678',
+        location: 'Lagos',
+        lat: 6.5244,
+        lng: 3.3792,
+        ready: true
+      },
+      {
+        id: 2,
+        name: 'David',
+        age: 28,
+        city: 'Nairobi',
+        bio: 'Photographer & hiking buddy 📸 ready for adventure',
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
         ],
         videos: [
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
@@ -412,13 +515,26 @@
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
           'https://player.vimeo.com/video/76979871?h=827fb9627c'
         ],
-        about:'Nature lover, freelance designer.',interests:'Hiking, film, coffee',lookingFor:'Travel partner',onlineStatus:'recently active',whatsapp:'233541234567',
-        lat:5.6500, lng:-0.1850 }, // East Legon
-      { id:3,name:'Ama',age:22,city:'Accra',bio:'Foodie & dancer 💃🏾 show me best jollof',img:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600',
-        gallery:[
-          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600',
-          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600',
-          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600'
+        about: 'Nature lover, freelance designer.',
+        interests: 'Hiking, film, coffee',
+        lookingFor: 'Travel partner & deep talks',
+        onlineStatus: 'recently active',
+        whatsapp: '254701234567',
+        location: 'Nairobi',
+        lat: -1.2864,
+        lng: 36.8172,
+        ready: true
+      },
+      {
+        id: 3,
+        name: 'Ama',
+        age: 22,
+        city: 'Accra',
+        bio: 'Foodie & dancer 💃🏾 show me your best jollof spot',
+        img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600&auto=format'
         ],
         videos: [
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
@@ -426,13 +542,27 @@
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
           'https://player.vimeo.com/video/76979871?h=827fb9627c'
         ],
-        about:'Dancer, marketer',interests:'Dance, parties, waakye',lookingFor:'Dance partner',onlineStatus:'online',whatsapp:'233261234567',
-        lat:5.5300, lng:-0.2300 }, // Kantamanto
-      { id:4,name:'Kwame',age:30,city:'Tema',bio:'Surfing at Labadi & beach lover',img:'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600',
-        gallery:[
-          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600',
-          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600',
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600'
+        about: 'Dancer, marketer, laughter magnet',
+        interests: 'Dance, parties, cooking',
+        lookingFor: 'Dance partner & fun dates',
+        onlineStatus: 'online',
+        whatsapp: '233501234567',
+        location: 'Accra',
+        lat: 5.6037,
+        lng: -0.1870,
+        ready: true
+      },
+      {
+        id: 4,
+        name: 'Kwame',
+        age: 30,
+        city: 'Tema',
+        bio: 'Surfing at Labadi & beach lover',
+        img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&auto=format'
         ],
         videos: [
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
@@ -440,16 +570,358 @@
           'https://player.vimeo.com/video/76979871?h=827fb9627c',
           'https://player.vimeo.com/video/76979871?h=827fb9627c'
         ],
-        about:'Salt water in veins',interests:'Surfing, travel, reggae',lookingFor:'Adventure buddy',onlineStatus:'away',whatsapp:'233501234567',
-        lat:5.6500, lng:-0.0167 } // Tema
+        about: 'Salt water in veins',
+        interests: 'Surfing, travel, reggae',
+        lookingFor: 'Adventure buddy',
+        onlineStatus: 'away',
+        whatsapp: '233501234567',
+        location: 'Tema',
+        lat: 5.6500,
+        lng: -0.0167,
+        ready: true
+      },
+      // Additional profiles to reach 16 ready individuals (using similar style)
+      {
+        id: 5,
+        name: 'Efya',
+        age: 26,
+        city: 'Accra',
+        bio: 'Singer & creative. Let’s make music together 🎵',
+        img: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format',
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Music is life',
+        interests: 'Singing, fashion, afrobeats',
+        lookingFor: 'Creative collab',
+        onlineStatus: 'online',
+        whatsapp: '233271234567',
+        location: 'Accra',
+        lat: 5.6000,
+        lng: -0.1900,
+        ready: true
+      },
+      {
+        id: 6,
+        name: 'Kofi',
+        age: 27,
+        city: 'Accra',
+        bio: 'Mechanical engineer, love cars and speed 🏎️',
+        img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Petrolhead',
+        interests: 'Cars, football, tech',
+        lookingFor: 'Ride buddy',
+        onlineStatus: 'online',
+        whatsapp: '233281234567',
+        location: 'Accra',
+        lat: 5.6200,
+        lng: -0.1700,
+        ready: true
+      },
+      {
+        id: 7,
+        name: 'Adwoa',
+        age: 24,
+        city: 'Accra',
+        bio: 'Makeup artist 💄 beauty & glam',
+        img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Beauty & glam',
+        interests: 'Makeup, fashion, photography',
+        lookingFor: 'Friendship',
+        onlineStatus: 'online',
+        whatsapp: '233291234567',
+        location: 'Accra',
+        lat: 5.5800,
+        lng: -0.2000,
+        ready: true
+      },
+      {
+        id: 8,
+        name: 'Yaw',
+        age: 31,
+        city: 'Tema',
+        bio: 'Fisherman & boat captain ⚓ love the sea',
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Sea lover',
+        interests: 'Fishing, boating, swimming',
+        lookingFor: 'Weekend trips',
+        onlineStatus: 'recently active',
+        whatsapp: '233301234567',
+        location: 'Tema',
+        lat: 5.6300,
+        lng: -0.0100,
+        ready: true
+      },
+      {
+        id: 9,
+        name: 'Akua',
+        age: 23,
+        city: 'Accra',
+        bio: 'Student & poet 📝 wordsmith',
+        img: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Write & vibe',
+        interests: 'Poetry, art, coffee',
+        lookingFor: 'Soulful convos',
+        onlineStatus: 'online',
+        whatsapp: '233311234567',
+        location: 'Accra',
+        lat: 5.5900,
+        lng: -0.2100,
+        ready: true
+      },
+      {
+        id: 10,
+        name: 'Felix',
+        age: 29,
+        city: 'Accra',
+        bio: 'DJ & producer 🎧 spinning afrobeats',
+        img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Music producer',
+        interests: 'Music, nightlife, tech',
+        lookingFor: 'Collaboration',
+        onlineStatus: 'online',
+        whatsapp: '233321234567',
+        location: 'Accra',
+        lat: 5.6100,
+        lng: -0.1800,
+        ready: true
+      },
+      {
+        id: 11,
+        name: 'Naa',
+        age: 25,
+        city: 'Accra',
+        bio: 'Yoga & wellness 🧘‍♀️ find your zen',
+        img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Zen life',
+        interests: 'Yoga, meditation, health',
+        lookingFor: 'Peaceful dates',
+        onlineStatus: 'away',
+        whatsapp: '233331234567',
+        location: 'Accra',
+        lat: 5.5700,
+        lng: -0.1900,
+        ready: true
+      },
+      {
+        id: 12,
+        name: 'Ebo',
+        age: 32,
+        city: 'Tema',
+        bio: 'Chef & food lover 🍳 let’s cook together',
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Food enthusiast',
+        interests: 'Cooking, jollof, baking',
+        lookingFor: 'Foodie partner',
+        onlineStatus: 'online',
+        whatsapp: '233341234567',
+        location: 'Tema',
+        lat: 5.6400,
+        lng: -0.0200,
+        ready: true
+      },
+      {
+        id: 13,
+        name: 'Abena',
+        age: 26,
+        city: 'Accra',
+        bio: 'Fashion designer 👗 style is life',
+        img: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&auto=format',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Style & trends',
+        interests: 'Fashion, sewing, art',
+        lookingFor: 'Creative collab',
+        onlineStatus: 'online',
+        whatsapp: '233351234567',
+        location: 'Accra',
+        lat: 5.6000,
+        lng: -0.2000,
+        ready: true
+      },
+      {
+        id: 14,
+        name: 'Kwesi',
+        age: 27,
+        city: 'Accra',
+        bio: 'Architect 🏛️ building dreams',
+        img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Design thinker',
+        interests: 'Design, art, travel',
+        lookingFor: 'Intellectual dates',
+        onlineStatus: 'recently active',
+        whatsapp: '233361234567',
+        location: 'Accra',
+        lat: 5.6200,
+        lng: -0.1700,
+        ready: true
+      },
+      {
+        id: 15,
+        name: 'Mawusi',
+        age: 24,
+        city: 'Accra',
+        bio: 'Nurse & healer ❤️ caring soul',
+        img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format',
+          'https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?w=600&auto=format',
+          'https://images.unsplash.com/photo-1464863979621-258859e62245?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Caring soul',
+        interests: 'Health, helping, yoga',
+        lookingFor: 'Genuine connection',
+        onlineStatus: 'online',
+        whatsapp: '233371234567',
+        location: 'Accra',
+        lat: 5.5800,
+        lng: -0.2100,
+        ready: true
+      },
+      {
+        id: 16,
+        name: 'Selorm',
+        age: 29,
+        city: 'Accra',
+        bio: 'Tech entrepreneur 💻 building the future',
+        img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format',
+        gallery: [
+          'https://images.unsplash.com/photo-1463453091185-61582044d556?w=600&auto=format',
+          'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=600&auto=format',
+          'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=600&auto=format'
+        ],
+        videos: [
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c',
+          'https://player.vimeo.com/video/76979871?h=827fb9627c'
+        ],
+        about: 'Startup life',
+        interests: 'Tech, business, innovation',
+        lookingFor: 'Networking & dating',
+        onlineStatus: 'online',
+        whatsapp: '233381234567',
+        location: 'Accra',
+        lat: 5.6100,
+        lng: -0.1800,
+        ready: true
+      }
     ];
 
-    // ----- ACCRA CENTROID (for fallback & distance calculation) -----
-    const ACCRA_LAT = 5.6037;
-    const ACCRA_LNG = -0.1870;
-    let userLat = ACCRA_LAT, userLng = ACCRA_LNG; // default to Accra center
+    const ACCRA_LAT = 5.6037, ACCRA_LNG = -0.1870;
+    let userLat = ACCRA_LAT, userLng = ACCRA_LNG;
 
-    // Haversine distance in miles
     function distanceMiles(lat1, lon1, lat2, lon2) {
       const R = 3959; 
       const dLat = (lat2-lat1)*Math.PI/180; 
@@ -458,7 +930,15 @@
       return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)) * 10) / 10;
     }
 
-    // ----- STATE -----
+    // Precise location name
+    function getLocationName(lat, lng) {
+      if (lat > 5.55 && lat < 5.65 && lng > -0.25 && lng < -0.15) return 'Osu, Accra';
+      if (lat > 5.6 && lat < 5.7 && lng > -0.2 && lng < -0.1) return 'East Legon, Accra';
+      if (lat > 5.5 && lat < 5.6 && lng > -0.24 && lng < -0.18) return 'Kantamanto, Accra';
+      if (lat > 5.6 && lat < 5.7 && lng > -0.05 && lng < 0.05) return 'Tema, Accra';
+      return 'Accra, Ghana';
+    }
+
     let currentIndex = 0;
     let startX = 0, endX = 0, isDragging = false;
     const stackEl = document.getElementById('stackContainer');
@@ -468,49 +948,36 @@
     const modalDynamic = document.getElementById('modalDynamic');
     const locationChip = document.getElementById('locationChip');
     const footerLocation = document.getElementById('footerLocation');
+    const circleContainer = document.getElementById('circleContainer');
 
-    // ----- IMPROVED LOCATION DETECTION (Accra-first) -----
-    function detectUserLocation() {
-      if (navigator.geolocation) {
-        // Set a timeout to avoid hanging
-        const timeoutId = setTimeout(() => {
-          console.log("Location timeout, using Accra default");
-          useAccraFallback();
-        }, 7000); // 7 sec timeout
+    // Render 16 ready circles
+    function renderCircles() {
+      const readyProfiles = profiles.filter(p => p.ready === true);
+      let circlesHtml = '';
+      readyProfiles.forEach(p => {
+        circlesHtml += `
+          <div class="meet-circle" onclick="openProfileFromCircle(${p.id})">
+            <div class="circle-avatar" style="background-image: url('${p.img}');"></div>
+            <span class="circle-name">${p.name}, ${p.age}</span>
+          </div>
+        `;
+      });
+      circleContainer.innerHTML = circlesHtml;
+    }
 
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            clearTimeout(timeoutId);
-            userLat = position.coords.latitude;
-            userLng = position.coords.longitude;
-            locationChip.innerHTML = `<i class="fas fa-location-dot" style="color:#ff5e8b;"></i> <span>📍 live · Accra region</span>`;
-            footerLocation.innerHTML = `<i class="fas fa-map-pin"></i> near you · ${userLat.toFixed(4)}, ${userLng.toFixed(4)}`;
-            renderStack();
-          },
-          (error) => {
-            clearTimeout(timeoutId);
-            console.warn("Geolocation error:", error.message);
-            useAccraFallback();
-          },
-          { enableHighAccuracy: true, timeout: 6000, maximumAge: 30000 }
-        );
-      } else {
-        useAccraFallback();
+    window.openProfileFromCircle = function(profileId) {
+      const profile = profiles.find(p => p.id === profileId);
+      if (profile) {
+        document.querySelector('.card-stack').style.display = 'none';
+        document.querySelector('.swipe-actions').style.display = 'none';
+        profileDetail.style.display = 'block';
+        showProfile(profile);
       }
-    }
+    };
 
-    function useAccraFallback() {
-      userLat = ACCRA_LAT;
-      userLng = ACCRA_LNG;
-      locationChip.innerHTML = `<i class="fas fa-location-dot" style="color:#ff5e8b;"></i> <span>📍 Accra (default)</span>`;
-      footerLocation.innerHTML = `<i class="fas fa-map-pin"></i> serving Accra · Ghana`;
-      renderStack();
-    }
-
-    // ----- RENDER STACK (card) -----
     function renderStack() {
       if (currentIndex >= profiles.length) {
-        stackEl.innerHTML = `<div class="glass-card" style="height:100%; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center;">💕 That's all for now! More Accra profiles coming soon.</div>`;
+        stackEl.innerHTML = `<div class="glass-card" style="height:100%; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center;">💕 That's all for now! More profiles coming soon.</div>`;
         return;
       }
       const p = profiles[currentIndex];
@@ -533,82 +1000,47 @@
     }
 
     function attachCardSwipe() {
-      const card = document.getElementById('activeCard'); 
-      if(!card) return;
-      function handleSwipe(deltaX) { 
-        if(deltaX > 80) likeAction(); 
-        else if(deltaX < -80) dislikeAction(); 
-        card.style.transform=''; 
-      }
-      // Touch events
+      const card = document.getElementById('activeCard'); if(!card) return;
+      function handleSwipe(deltaX) { if(deltaX>80) likeAction(); else if(deltaX<-80) dislikeAction(); card.style.transform=''; }
       card.addEventListener('touchstart',(e)=>{startX=e.touches[0].clientX; isDragging=true;},{passive:true});
       card.addEventListener('touchmove',(e)=>{if(!isDragging)return; endX=e.touches[0].clientX; let d=endX-startX; card.style.transform=`translateX(${d*0.6}px) rotate(${d*0.02}deg)`;},{passive:true});
       card.addEventListener('touchend',()=>{if(!isDragging)return; isDragging=false; handleSwipe(endX-startX); startX=0; endX=0;});
-      // Mouse events
       card.addEventListener('mousedown',(e)=>{startX=e.clientX; isDragging=true; e.preventDefault();});
       window.addEventListener('mousemove',(e)=>{if(!isDragging)return; endX=e.clientX; let d=endX-startX; card.style.transform=`translateX(${d*0.6}px) rotate(${d*0.02}deg)`;});
       window.addEventListener('mouseup',()=>{if(!isDragging)return; handleSwipe(endX-startX); isDragging=false; startX=0;endX=0;});
     }
 
-    // ----- LIKE ACTION (shows profile AND increments index) -----
     function likeAction() {
-      if(currentIndex >= profiles.length) return;
+      if(currentIndex>=profiles.length) return;
       const p = profiles[currentIndex];
-      // Heart animation
       document.body.insertAdjacentHTML('beforeend','<div class="heart-pop">❤️</div>');
       setTimeout(()=>document.querySelector('.heart-pop')?.remove(),800);
-      
-      // Show profile for current profile (index not incremented yet)
       showProfile(p);
-      
-      // Hide stack, show profile
       document.querySelector('.card-stack').style.display='none';
       document.querySelector('.swipe-actions').style.display='none';
       profileDetail.style.display='block';
-      
-      // --- IMPORTANT: Auto increment index so after going back we see next profile ---
-      // But we keep currentIndex unchanged until user goes back, then we advance.
-      // We'll store that this profile was "liked" and we want next on back.
-      // We'll handle in backToSwipe function.
     }
 
     function dislikeAction() { 
-      if(currentIndex < profiles.length - 1) { 
-        currentIndex++; 
-        renderStack(); 
-      } else {
-        // end of list
-        currentIndex++;
-        renderStack();
-      }
+      if(currentIndex<profiles.length-1) { currentIndex++; renderStack(); } 
+      else { currentIndex=profiles.length; renderStack(); }
     }
 
-    // ----- PROFILE PAGE (unified 3-col grid: images + 4 videos) -----
     function showProfile(p) {
       const dist = distanceMiles(userLat, userLng, p.lat, p.lng);
-      // Combine images & videos (all 7 items)
-      const mediaItems = [
-        ...p.gallery.map(url => ({ type: 'image', url: url })),
-        ...p.videos.map(url => ({ type: 'video', url: url }))
-      ]; 
+      const mediaItems = [...p.gallery.map(url=>({type:'image',url})), ...p.videos.map(url=>({type:'video',url}))];
       const mediaGridHtml = mediaItems.map(item => {
-        if (item.type === 'image') {
-          return `<div class="grid-item" style="background-image: url('${item.url}')" onclick="openMediaModal('${item.url}', 'image')"></div>`;
-        } else {
-          // video thumbnail with play icon
-          return `<div class="grid-item video-item" style="background-image: url('https://images.unsplash.com/photo-1579165466741-7f35e4755661?w=600');" onclick="openMediaModal('${item.url}', 'video')"></div>`;
-        }
+        if(item.type==='image') return `<div class="grid-item" style="background-image: url('${item.url}')" onclick="openMediaModal('${item.url}', 'image')"></div>`;
+        else return `<div class="grid-item video-item" style="background-image: url('https://images.unsplash.com/photo-1579165466741-7f35e4755661?w=600');" onclick="openMediaModal('${item.url}', 'video')"></div>`;
       }).join('');
-
       const whatsappLink = `https://wa.me/${p.whatsapp}`;
-      const html = `
+      profileDetail.innerHTML = `
         <div class="profile-header-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.4), transparent), url('${p.img}');">
           <div class="online-badge"><i class="fas fa-circle" style="color:#4caf50;"></i> ${p.onlineStatus} · ${dist} miles</div>
         </div>
         <div style="margin: 16px 0; display: flex; justify-content: center;">
           <a href="${whatsappLink}" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
-        <!-- unified media grid (images + 4 videos) -->
         <div class="media-grid">${mediaGridHtml}</div>
         <div class="info-card">
           <h3 style="font-weight:700;">About ${p.name}</h3>
@@ -626,50 +1058,50 @@
           </div>
         </div>
       `;
-      profileDetail.innerHTML = html;
     }
 
-    // ----- BACK TO SWIPE (advance to next profile) -----
     window.backToSwipe = function() {
-      // Advance to next profile (since current one was viewed)
-      if (currentIndex < profiles.length - 1) {
-        currentIndex++;
-      } else {
-        // If it was the last profile, set to end (will show empty state)
-        currentIndex = profiles.length;
-      }
-      profileDetail.style.display = 'none';
-      document.querySelector('.card-stack').style.display = 'block';
-      document.querySelector('.swipe-actions').style.display = 'flex';
-      renderStack(); // shows next profile or empty state
+      if(currentIndex < profiles.length-1) currentIndex++; else currentIndex = profiles.length;
+      profileDetail.style.display='none';
+      document.querySelector('.card-stack').style.display='block';
+      document.querySelector('.swipe-actions').style.display='flex';
+      renderStack();
     };
 
-    // ----- MODAL for image/video -----
     window.openMediaModal = function(url, type) {
       modal.classList.add('active');
-      if (type === 'image') {
-        modalDynamic.innerHTML = `<img src="${url}" class="modal-content">`;
-      } else {
-        modalDynamic.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
-      }
+      modalDynamic.innerHTML = type==='image' ? `<img src="${url}" class="modal-content">` : `<iframe src="${url}" allowfullscreen></iframe>`;
     };
-
     closeModal.addEventListener('click', ()=>{ modal.classList.remove('active'); modalDynamic.innerHTML=''; });
     modal.addEventListener('click', (e)=>{ if(e.target===modal) { modal.classList.remove('active'); modalDynamic.innerHTML=''; } });
 
-    // ----- BUTTON LISTENERS -----
     document.getElementById('btnDislike').addEventListener('click', dislikeAction);
-    document.getElementById('btnLike').addEventListener('click', ()=>{ if(currentIndex < profiles.length) likeAction(); });
+    document.getElementById('btnLike').addEventListener('click', ()=>{ if(currentIndex<profiles.length) likeAction(); });
+    document.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',()=>alert('🇬🇭 Accra filter')));
+    document.getElementById('termsLink').addEventListener('click', e=>{ e.preventDefault(); alert('Terms: 18+ only'); });
+    document.getElementById('reportLink').addEventListener('click', e=>{ e.preventDefault(); alert('Report profile'); });
 
-    // filter pill demo
-    document.querySelectorAll('.pill').forEach(p => p.addEventListener('click', ()=>alert('🇬🇭 Accra filter: showing local profiles')));
-    document.getElementById('termsLink').addEventListener('click', e => { e.preventDefault(); alert('Terms: 18+ only, Accra community'); });
-    document.getElementById('reportLink').addEventListener('click', e => { e.preventDefault(); alert('Report profile (moderator for Accra)'); });
+    // Location detect
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          userLat = pos.coords.latitude; userLng = pos.coords.longitude;
+          const name = getLocationName(userLat, userLng);
+          locationChip.innerHTML = `<i class="fas fa-location-dot" style="color:#ff5e8b;"></i> <span>📍 ${name}</span>`;
+          footerLocation.innerHTML = `<i class="fas fa-map-pin"></i> near you · ${name}`;
+          renderStack(); renderCircles();
+        },
+        () => { useAccraFallback(); }
+      );
+    } else { useAccraFallback(); }
 
-    // START
-    detectUserLocation();
+    function useAccraFallback() {
+      userLat = ACCRA_LAT; userLng = ACCRA_LNG;
+      locationChip.innerHTML = `<i class="fas fa-location-dot" style="color:#ff5e8b;"></i> <span>📍 Accra Central, Ghana</span>`;
+      footerLocation.innerHTML = `<i class="fas fa-map-pin"></i> serving Accra · Ghana`;
+      renderStack(); renderCircles();
+    }
   })();
 </script>
-<!-- ensure back function global (already inside) -->
 </body>
 </html>
