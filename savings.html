@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Account · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Savings Account</h1>
+                        <p>Grow your money with competitive interest rates</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Account Hero Section -->
+            <div class="account-hero savings">
+                <div class="account-hero-content">
+                    <div class="account-badge">High-Yield Savings</div>
+                    <div class="account-type">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span>Premium Savings</span>
+                    </div>
+                    <div class="account-balance-large">
+                        <span class="currency">$</span>
+                        <span class="amount">215,678.90</span>
+                    </div>
+                    <div class="interest-rate">
+                        <i class="fas fa-percent"></i>
+                        <span>2.50% APY</span>
+                    </div>
+                </div>
+                <div class="account-hero-actions">
+                    <button class="action-btn-large primary" onclick="location.href='transfer.html'">
+                        <i class="fas fa-paper-plane"></i>
+                        Transfer to Savings
+                    </button>
+                    <button class="action-btn-large" onclick="showWithdrawModal()">
+                        <i class="fas fa-upload"></i>
+                        Withdraw
+                    </button>
+                    <button class="action-btn-large" onclick="showInterestModal()">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Interest
+                    </button>
+                </div>
+            </div>
+
+            <!-- Savings Stats -->
+            <div class="savings-stats">
+                <div class="stat-card highlight">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Interest Earned (YTD)</span>
+                        <span class="stat-value positive">+$7384.72</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Monthly Interest</span>
+                        <span class="stat-value">$32.15</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Next Interest Payment</span>
+                        <span class="stat-value">Apr 1, 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Goals -->
+            <div class="savings-goals">
+                <div class="section-header">
+                    <h2>Savings Goals</h2>
+                    <button class="btn-outline-small" onclick="showAddGoalModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Goal
+                    </button>
+                </div>
+
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3>Emergency Fund</h3>
+                            <span class="goal-category">Essential</span>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="75">
+                                <svg width="100" height="100">
+                                    <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="progress" cx="50" cy="50" r="45" style="stroke-dasharray: 283; stroke-dashoffset: 71;"></circle>
+                                </svg>
+                                <span class="progress-text">75%</span>
+                            </div>
+                            <div class="goal-details">
+                                <div class="goal-current">$61,000</div>
+                                <div class="goal-target">of $80,000</div>
+                            </div>
+                        </div>
+                        <div class="goal-footer">
+                            <span class="goal-date">Target: Dec 2024</span>
+                            <button class="goal-action" onclick="showContributeModal()">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3>Vacation Fund</h3>
+                            <span class="goal-category">Travel</span>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="45">
+                                <svg width="100" height="100">
+                                    <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="progress" cx="50" cy="50" r="45" style="stroke-dasharray: 283; stroke-dashoffset: 156;"></circle>
+                                </svg>
+                                <span class="progress-text">45%</span>
+                            </div>
+                            <div class="goal-details">
+                                <div class="goal-current">$21,250</div>
+                                <div class="goal-target">of $65,000</div>
+                            </div>
+                        </div>
+                        <div class="goal-footer">
+                            <span class="goal-date">Target: Aug 2026</span>
+                            <button class="goal-action" onclick="showContributeModal()">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-header">
+                            <h3>Down Payment</h3>
+                            <span class="goal-category">Housing</span>
+                        </div>
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="70">
+                                <svg width="100" height="100">
+                                    <circle class="bg" cx="50" cy="50" r="45"></circle>
+                                    <circle class="progress" cx="50" cy="50" r="45" style="stroke-dasharray: 283; stroke-dashoffset: 198;"></circle>
+                                </svg>
+                                <span class="progress-text">70%</span>
+                            </div>
+                            <div class="goal-details">
+                                <div class="goal-current">$31,000</div>
+                                <div class="goal-target">of $50,000</div>
+                            </div>
+                        </div>
+                        <div class="goal-footer">
+                            <span class="goal-date">Target: Jun 2026</span>
+                            <button class="goal-action" onclick="showContributeModal()">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interest Calculator -->
+            <div class="interest-calculator">
+                <h3>Interest Calculator</h3>
+                <div class="calculator-grid">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label>Current Balance</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" value="215678.90" id="calcBalance">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Monthly Deposit</label>
+                            <div class="input-wrapper">
+                                <span class="currency">$</span>
+                                <input type="number" value="500" id="calcDeposit">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Time Period (Years)</label>
+                            <input type="number" value="5" id="calcYears" min="1" max="30">
+                        </div>
+                    </div>
+                    <div class="calculator-results">
+                        <div class="result-item">
+                            <span>Future Balance</span>
+                            <span class="result-value" id="futureValue">$223,456.78</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total Interest Earned</span>
+                            <span class="result-value positive" id="totalInterest">$87,777.88</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Effective APY</span>
+                            <span class="result-value">2.53%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Savings Activity -->
+            <div class="account-transactions">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="transactions.html" class="view-all-link">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="transactions-list-compact">
+                    <div class="transaction-row">
+                        <div class="transaction-icon deposit">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Interest Payment</div>
+                            <div class="transaction-date">Mar 1, 2024</div>
+                        </div>
+                        <div class="transaction-amount positive">+$32.15</div>
+                    </div>
+
+                    <div class="transaction-row">
+                        <div class="transaction-icon transfer">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Transfer to Emergency Fund</div>
+                            <div class="transaction-date">Feb 28, 2024</div>
+                        </div>
+                        <div class="transaction-amount positive">+$500.00</div>
+                    </div>
+
+                    <div class="transaction-row">
+                        <div class="transaction-icon transfer">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Withdrawal to Checking</div>
+                            <div class="transaction-date">Feb 15, 2024</div>
+                        </div>
+                        <div class="transaction-amount negative">-$1,000.00</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Modal functions
+        function showWithdrawModal() {
+            alert('You would be able to withdraw funds via ATM, teller, or transfer to external account.');
+        }
+
+        function showInterestModal() {
+            alert('Interest calculator allows you to see how your savings will grow over time with regular contributions and compounding interest.');
+        }
+
+        function showAddGoalModal() {
+            alert('Add savings goal )');
+        }
+
+        function showContributeModal() {
+            alert('Contribute to goal (demo)');
+        }
+
+        // Simple interest calculator
+        function calculateInterest() {
+            const balance = parseFloat(document.getElementById('calcBalance').value) || 0;
+            const deposit = parseFloat(document.getElementById('calcDeposit').value) || 0;
+            const years = parseFloat(document.getElementById('calcYears').value) || 1;
+            const rate = 0.025; // 2.5% APY
+
+            // Simple compound interest calculation (for demo)
+            let futureValue = balance * Math.pow(1 + rate, years);
+            // Add monthly deposits (simplified)
+            futureValue += deposit * 12 * years * (1 + rate/2);
+
+            const totalInterest = futureValue - (balance + deposit * 12 * years);
+
+            document.getElementById('futureValue').textContent = '$' + futureValue.toFixed(2);
+            document.getElementById('totalInterest').textContent = '$' + totalInterest.toFixed(2);
+        }
+
+        // Add event listeners for calculator
+        document.getElementById('calcBalance').addEventListener('input', calculateInterest);
+        document.getElementById('calcDeposit').addEventListener('input', calculateInterest);
+        document.getElementById('calcYears').addEventListener('input', calculateInterest);
+
+        // Initial calculation
+        calculateInterest();
+    </script>
+</body>
+</html>

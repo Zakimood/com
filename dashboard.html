@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li class="active">
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                                <span class="nav-badge">9</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Good morning, John</h1>
+                        <p>Here's your financial summary for today</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search transactions, accounts...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Quick Actions Strip -->
+            <div class="quick-actions-strip">
+                <button class="quick-action-card primary" onclick="location.href='transfer.html'">
+                    <i class="fas fa-arrow-right-arrow-left"></i>
+                    <span>Transfer</span>
+                </button>
+                <button class="quick-action-card" onclick="location.href='checking.html'">
+                    <i class="fas fa-wallet"></i>
+                    <span>Accounts</span>
+                </button>
+                <button class="quick-action-card" onclick="location.href='paybills.html'">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Pay Bills</span>
+                </button>
+                <button class="quick-action-card" onclick="location.href='cards.html'">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Cards</span>
+                </button>
+                <button class="quick-action-card" onclick="location.href='statements.html'">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Statements</span>
+                </button>
+                <button class="quick-action-card" onclick="location.href='investments.html'">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Investments</span>
+                </button>
+            </div>
+
+            <!-- Account Overview Cards -->
+            <div class="account-overview">
+                <div class="overview-header">
+                    <h2>Account Overview</h2>
+                    <a href="checking.html" class="view-all-link">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="account-cards-grid">
+                    <!-- Main Account Card -->
+                    <div class="account-card main" onclick="location.href='checking.html'" style="cursor: pointer;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-wallet"></i>
+                                <span>Total Balance</span>
+                            </div>
+                            <div class="card-actions">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                        <div class="card-balance">
+                            <span class="currency">$</span>
+                            <span class="amount">4,317,899.89</span>
+                        </div>
+                        <div class="card-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+2.3% from last month</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="footer-item">
+                                <span class="label">Available</span>
+                                <span class="value">$4,317,899.89</span>
+                            </div>
+                            <div class="footer-item">
+                                <span class="label">Hold</span>
+                                <span class="value">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checking Account -->
+                    <div class="account-card" onclick="location.href='checking.html'" style="cursor: pointer;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Checking</span>
+                            </div>
+                            <span class="card-badge">Main</span>
+                        </div>
+                        <div class="card-balance small">
+                            <span class="currency">$</span>
+                            <span class="amount">645,432.10</span>
+                        </div>
+                        <div class="card-account-number" onclick="event.stopPropagation();">
+                            <i class="far fa-copy"></i>
+                            <span>**** 1234</span>
+                        </div>
+                        <div class="card-progress">
+                            <div class="progress-label">
+                                <span>Monthly limit</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Savings Account -->
+                    <div class="account-card highlight" onclick="location.href='savings.html'" style="cursor: pointer;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                            </div>
+                            <span class="card-badge">2.5% APY</span>
+                        </div>
+                        <div class="card-balance small">
+                            <span class="currency">$</span>
+                            <span class="amount">215,678.90</span>
+                        </div>
+                        <div class="card-account-number" onclick="event.stopPropagation();">
+                            <i class="far fa-copy"></i>
+                            <span>**** 5678</span>
+                        </div>
+                        <div class="card-interest">
+                            <i class="fas fa-leaf"></i>
+                            <span>Earned $32.15 this month</span>
+                        </div>
+                    </div>
+
+                    <!-- Investment Account -->
+                    <div class="account-card" onclick="location.href='investments.html'" style="cursor: pointer;">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                            </div>
+                            <span class="card-change small positive">+5.2%</span>
+                        </div>
+                        <div class="card-balance small">
+                            <span class="currency">$</span>
+                            <span class="amount">3,456,789.89</span>
+                        </div>
+                        <div class="card-investment-details">
+                            <div class="detail">
+                                <span>Stocks</span>
+                                <span class="positive">$2,700,000.5</span>
+                            </div>
+                            <div class="detail">
+                                <span>ETF</span>
+                                <span>$759,058.87</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts & Analytics Row -->
+            <div class="analytics-row">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Spending Analysis</h3>
+                            <p class="subtitle">Last 30 days vs previous period</p>
+                        </div>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="dot" style="background: #0A2472"></span>
+                                This month
+                            </span>
+                            <span class="legend-item">
+                                <span class="dot" style="background: #E5E7EB"></span>
+                                Last month
+                            </span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <!-- Chart bars (demo) -->
+                        <div class="chart-bars">
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 120px"></div>
+                                <div class="bar previous" style="height: 100px"></div>
+                                <span class="bar-label">Mon</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 80px"></div>
+                                <div class="bar previous" style="height: 90px"></div>
+                                <span class="bar-label">Tue</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 150px"></div>
+                                <div class="bar previous" style="height: 110px"></div>
+                                <span class="bar-label">Wed</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 100px"></div>
+                                <div class="bar previous" style="height: 80px"></div>
+                                <span class="bar-label">Thu</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 130px"></div>
+                                <div class="bar previous" style="height: 120px"></div>
+                                <span class="bar-label">Fri</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 70px"></div>
+                                <div class="bar previous" style="height: 60px"></div>
+                                <span class="bar-label">Sat</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar current" style="height: 60px"></div>
+                                <div class="bar previous" style="height: 50px"></div>
+                                <span class="bar-label">Sun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-card">
+                    <div class="card-header">
+                        <h3>Financial Insights</h3>
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="insights-list">
+                        <div class="insight-item" onclick="location.href='savings.html'" style="cursor: pointer;">
+                            <div class="insight-icon success">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Spending decreased by 12%</h4>
+                                <p>Compared to last month, you've saved $245 more</p>
+                            </div>
+                        </div>
+                        <div class="insight-item" onclick="location.href='paybills.html'" style="cursor: pointer;">
+                            <div class="insight-icon warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Upcoming bill due in 3 days</h4>
+                                <p>Electricity bill of $145.67</p>
+                            </div>
+                        </div>
+                        <div class="insight-item" onclick="location.href='savings.html'" style="cursor: pointer;">
+                            <div class="insight-icon info">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Savings goal 75% complete</h4>
+                                <p>Emergency fund: $15,000 of $20,000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="insight-action" onclick="location.href='transactions.html'">
+                        View All Insights
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="transactions-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Recent Transactions</h2>
+                        <p class="subtitle">Your latest 10 transactions</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-outline-small" onclick="location.href='statements.html'">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-outline-small" onclick="location.href='transactions.html'">
+                            <i class="fas fa-filter"></i>
+                            Filter
+                        </button>
+                        <a href="transactions.html" class="view-all-link">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="transactions-table-container">
+                    <table class="transactions-table-premium">
+                        <thead>
+                            <tr>
+                                <th>Transaction</th>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th class="text-right">Amount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="location.href='transactions.html'" style="cursor: pointer;">
+                                <td>
+                                    <div class="transaction-info">
+                                        <div class="transaction-icon transfer">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </div>
+                                        <div>
+                                            <div class="transaction-name">Transfer to Sarah Johnson</div>
+                                            <div class="transaction-meta">To: **** 4567</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mar 15, 2024</td>
+                                <td><span class="category-badge">Transfer</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td class="text-right negative">-$250.00</td>
+                                <td><button class="row-action" onclick="event.stopPropagation(); location.href='transactions.html'"><i class="fas fa-ellipsis-v"></i></button></td>
+                            </tr>
+                            <tr onclick="location.href='transactions.html'" style="cursor: pointer;">
+                                <td>
+                                    <div class="transaction-info">
+                                        <div class="transaction-icon deposit">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </div>
+                                        <div>
+                                            <div class="transaction-name">Salary Deposit - ABC Corp</div>
+                                            <div class="transaction-meta">Monthly payroll</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mar 14, 2024</td>
+                                <td><span class="category-badge income">Income</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td class="text-right positive">+$3,500.00</td>
+                                <td><button class="row-action" onclick="event.stopPropagation(); location.href='transactions.html'"><i class="fas fa-ellipsis-v"></i></button></td>
+                            </tr>
+                            <tr onclick="location.href='transactions.html'" style="cursor: pointer;">
+                                <td>
+                                    <div class="transaction-info">
+                                        <div class="transaction-icon payment">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div>
+                                            <div class="transaction-name">Amazon.com</div>
+                                            <div class="transaction-meta">Online purchase</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Mar 12, 2024</td>
+                                <td><span class="category-badge shopping">Shopping</span></td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td class="text-right negative">-$89.99</td>
+                                <td><button class="row-action" onclick="event.stopPropagation(); location.href='transactions.html'"><i class="fas fa-ellipsis-v"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Widgets -->
+            <div class="bottom-widgets">
+                <div class="widget-card" onclick="location.href='paybills.html'" style="cursor: pointer;">
+                    <div class="widget-header">
+                        <h3>Upcoming Bills</h3>
+                        <a href="paybills.html" onclick="event.stopPropagation();">View all</a>
+                    </div>
+                    <div class="widget-list">
+                        <div class="list-item">
+                            <div class="item-info">
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <div class="item-title">Electricity</div>
+                                    <div class="item-date">Due in 3 days</div>
+                                </div>
+                            </div>
+                            <div class="item-amount">$145.67</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <i class="fas fa-wifi"></i>
+                                <div>
+                                    <div class="item-title">Internet</div>
+                                    <div class="item-date">Due in 5 days</div>
+                                </div>
+                            </div>
+                            <div class="item-amount">$89.99</div>
+                        </div>
+                        <div class="list-item">
+                            <div class="item-info">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>
+                                    <div class="item-title">Phone</div>
+                                    <div class="item-date">Due in 7 days</div>
+                                </div>
+                            </div>
+                            <div class="item-amount">$65.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-card" onclick="location.href='investments.html'" style="cursor: pointer;">
+                    <div class="widget-header">
+                        <h3>Spending Categories</h3>
+                        <a href="investments.html" onclick="event.stopPropagation();">Details</a>
+                    </div>
+                    <div class="spending-categories">
+                        <div class="category-item">
+                            <div class="category-label">
+                                <span>Shopping</span>
+                                <span>35%</span>
+                            </div>
+                            <div class="category-bar">
+                                <div class="bar-fill" style="width: 35%; background: #0A2472"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-label">
+                                <span>Food & Dining</span>
+                                <span>28%</span>
+                            </div>
+                            <div class="category-bar">
+                                <div class="bar-fill" style="width: 28%; background: #2563EB"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-label">
+                                <span>Transport</span>
+                                <span>18%</span>
+                            </div>
+                            <div class="category-bar">
+                                <div class="bar-fill" style="width: 18%; background: #7C3AED"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-label">
+                                <span>Entertainment</span>
+                                <span>12%</span>
+                            </div>
+                            <div class="category-bar">
+                                <div class="bar-fill" style="width: 12%; background: #DB2777"></div>
+                            </div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-label">
+                                <span>Other</span>
+                                <span>7%</span>
+                            </div>
+                            <div class="category-bar">
+                                <div class="bar-fill" style="width: 7%; background: #9CA3AF"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-card highlight" onclick="location.href='cards.html'" style="cursor: pointer;">
+                    <div class="widget-header">
+                        <h3>Credit Score</h3>
+                        <span class="score-badge">Excellent</span>
+                    </div>
+                    <div class="credit-score-display">
+                        <div class="score-number">782</div>
+                        <div class="score-range">
+                            <div class="range-bar">
+                                <div class="range-fill" style="width: 78%"></div>
+                            </div>
+                            <div class="range-labels">
+                                <span>300</span>
+                                <span>850</span>
+                            </div>
+                        </div>
+                        <div class="score-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+12 points from last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Demo Modal (kept for any demo features) -->
+    <div class="modal-premium" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Demo Feature</h2>
+                <button class="modal-close" onclick="closeDemoModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center; color: #64748B; padding: 20px;">
+                    This is a demonstration feature. In a production environment, this would perform the requested action.
+                </p>
+            </div>
+            <div class="modal-footer" style="justify-content: center;">
+                <button class="btn-primary" onclick="closeDemoModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Show demo modal (kept for any remaining demo features)
+        function showDemoModal(feature) {
+            const modal = document.getElementById('demoModal');
+            modal.querySelector('h2').textContent = feature + ' - Demo';
+            modal.classList.add('show');
+        }
+
+        // Close demo modal
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.remove('show');
+        }
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 1000);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('demoModal');
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+
+        // Copy account number
+        document.querySelectorAll('.card-account-number').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const text = this.querySelector('span').textContent;
+                navigator.clipboard.writeText(text);
+                
+                // Show tooltip
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

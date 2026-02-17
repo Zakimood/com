@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investments · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Investment Portfolio</h1>
+                        <p>Track and manage your investments</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search investments...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Portfolio Overview -->
+            <div class="portfolio-overview">
+                <div class="portfolio-chart-card">
+                    <h3>Portfolio Allocation</h3>
+                    <div class="portfolio-chart">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="portfolio-stats-card">
+                    <div class="stat-row">
+                        <span class="stat-label">last 24hrs Value</span>
+                        <span class="stat-value-large">$3,456,789.00</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total Return</span>
+                        <span class="stat-value positive">3,486,659.37 (5.2%)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Day Change</span>
+                        <span class="stat-value positive">+29,870.37 (0.86%)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Dividends (YTD)</span>
+                        <span class="stat-value">$45.67</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Holdings Table -->
+            <div class="holdings-section">
+                <div class="section-header">
+                    <h2>Your Holdings</h2>
+                    <button class="btn-outline-small" onclick="showTradeModal()">
+                        <i class="fas fa-plus"></i>
+                        Trade
+                    </button>
+                </div>
+
+                <div class="holdings-table-container">
+                    <table class="holdings-table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th>Shares</th>
+                                <th>Price</th>
+                                <th>Value</th>
+                                <th>Today</th>
+                                <th>Total Return</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="symbol">AAPL</span></td>
+                                <td>Apple Inc.</td>
+                                <td>5</td>
+                                <td>$175.34</td>
+                                <td>$1,500,000.25</td>
+                                <td class="positive">+1.2%</td>
+                                <td class="positive">+$18,000.00 (9.6%)</td>
+                                <td><button class="trade-btn" onclick="showTradeModal('AAPL')">Trade</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="symbol">MSFT</span></td>
+                                <td>Microsoft Corp</td>
+                                <td>3</td>
+                                <td>$420.45</td>
+                                <td>$1,200,000.25</td>
+                                <td class="positive">+0.8%</td>
+                                <td class="positive">+$9,600.00 (5.1%)</td>
+                                <td><button class="trade-btn" onclick="showTradeModal('MSFT')">Trade</button></td>
+                            </tr>
+                            <tr>
+                                <td><span class="symbol">VTI</span></td>
+                                <td>Vanguard Total Stock Market ETF</td>
+                                <td>8</td>
+                                <td>$258.23</td>
+                                <td>$756,788.50</td>
+                                <td class="positive">+0.3%</td>
+                                <td class="positive">+$2,270.37 (1.7%)</td>
+                                <td><button class="trade-btn" onclick="showTradeModal('VTI')">Trade</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Performance Chart -->
+            <div class="performance-section">
+                <h3>Portfolio Performance</h3>
+                <div class="performance-chart">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Watchlist -->
+            <div class="watchlist-section">
+                <div class="section-header">
+                    <h2>Watchlist</h2>
+                    <button class="btn-outline-small" onclick="showAddToWatchlist()">
+                        <i class="fas fa-plus"></i>
+                        Add Symbol
+                    </button>
+                </div>
+
+                <div class="watchlist-grid">
+                    <div class="watchlist-item">
+                        <div class="symbol-info">
+                            <span class="symbol">GOOGL</span>
+                            <span class="company">Alphabet Inc.</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="price">$145.23</span>
+                            <span class="change positive">+2.34 (1.6%)</span>
+                        </div>
+                    </div>
+                    <div class="watchlist-item">
+                        <div class="symbol-info">
+                            <span class="symbol">AMZN</span>
+                            <span class="company">Amazon.com Inc.</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="price">$178.50</span>
+                            <span class="change positive">+1.23 (0.7%)</span>
+                        </div>
+                    </div>
+                    <div class="watchlist-item">
+                        <div class="symbol-info">
+                            <span class="symbol">TSLA</span>
+                            <span class="company">Tesla Inc.</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="price">$175.34</span>
+                            <span class="change negative">-2.45 (1.4%)</span>
+                        </div>
+                    </div>
+                    <div class="watchlist-item">
+                        <div class="symbol-info">
+                            <span class="symbol">NVDA</span>
+                            <span class="company">NVIDIA Corp</span>
+                        </div>
+                        <div class="price-info">
+                            <span class="price">$890.23</span>
+                            <span class="change positive">+15.67 (1.8%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Trade Modal -->
+    <div class="modal-premium" id="tradeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Trade <span id="tradeSymbol"></span></h2>
+                <button class="modal-close" onclick="closeModal('tradeModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="trade-form">
+                    <div class="form-group">
+                        <label>Action</label>
+                        <div class="trade-actions">
+                            <button class="trade-action active" onclick="setTradeAction('buy')">Buy</button>
+                            <button class="trade-action" onclick="setTradeAction('sell')">Sell</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Order Type</label>
+                        <select class="trade-select">
+                            <option>Market Order</option>
+                            <option>Limit Order</option>
+                            <option>Stop Order</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Shares</label>
+                        <input type="number" value="1" min="1" class="trade-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Price (Estimated)</label>
+                        <div class="price-display">$175.34</div>
+                    </div>
+                    <div class="trade-total">
+                        <span>Estimated Total</span>
+                        <span class="total-amount">$175.34</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('tradeModal')">Cancel</button>
+                <button class="btn-primary" onclick="executeTrade()">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Allocation Chart
+        const ctx = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Stocks', 'ETFs', 'Bonds', 'Cash'],
+                datasets: [{
+                    data: [2138.05, 2065.84, 345.69, 456.89],
+                    backgroundColor: ['#0A2472', '#2563EB', '#7C3AED', '#9CA3AF'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Performance Chart
+        const perfCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(perfCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Portfolio Value',
+                    data: [3200, 3350, 3420, 3380, 3450, 3456.89],
+                    borderColor: '#0A2472',
+                    backgroundColor: 'rgba(10, 36, 114, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Trade functions
+        let currentTradeAction = 'buy';
+        let currentSymbol = '';
+
+        function showTradeModal(symbol) {
+            currentSymbol = symbol || 'AAPL';
+            document.getElementById('tradeSymbol').textContent = currentSymbol;
+            document.getElementById('tradeModal').classList.add('show');
+        }
+
+        function setTradeAction(action) {
+            currentTradeAction = action;
+            document.querySelectorAll('.trade-action').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function executeTrade() {
+            alert('Trade executed (demo)');
+            closeModal('tradeModal');
+        }
+
+        function showAddToWatchlist() {
+            alert('Add to watchlist feature (demo)');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-premium')) {
+                event.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

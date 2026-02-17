@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Bills · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Pay Bills</h1>
+                        <p>Schedule and manage your bill payments</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search bills...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Pay Bill Tabs -->
+            <div class="bill-tabs">
+                <button class="bill-tab active" onclick="switchBillTab('upcoming')">Upcoming Bills</button>
+                <button class="bill-tab" onclick="switchBillTab('scheduled')">Scheduled</button>
+                <button class="bill-tab" onclick="switchBillTab('paid')">Paid Bills</button>
+                <button class="bill-tab" onclick="switchBillTab('payees')">Manage Payees</button>
+            </div>
+
+            <!-- Pay Bill Form -->
+            <div class="pay-bill-form">
+                <h3>Make a Payment</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pay From</label>
+                        <select class="bill-select">
+                            <option>Checking Account (****1234) - $5,432.10</option>
+                            <option>Savings Account (****5678) - $15,678.90</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pay To</label>
+                        <select class="bill-select" id="payeeSelect">
+                            <option value="electric">Electric Company</option>
+                            <option value="internet">Internet Service Provider</option>
+                            <option value="phone">Phone Company</option>
+                            <option value="water">Water Utility</option>
+                            <option value="credit">Credit Card</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <div class="input-wrapper amount">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" value="145.67" step="0.01" id="billAmount">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Date</label>
+                        <input type="date" class="bill-date" value="2024-03-20">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Account Number (for payee)</label>
+                        <input type="text" value="123456789" placeholder="Enter account number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Frequency</label>
+                        <select class="bill-select">
+                            <option>One Time Payment</option>
+                            <option>Weekly</option>
+                            <option>Monthly</option>
+                            <option>Quarterly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-secondary" onclick="scheduleBill()">Schedule Later</button>
+                    <button class="btn-primary" onclick="payBill()">
+                        <i class="fas fa-check-circle"></i>
+                        Pay Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Upcoming Bills List -->
+            <div class="upcoming-bills" id="upcomingBills">
+                <div class="section-header">
+                    <h3>Upcoming Bills</h3>
+                    <span class="total-due">Total Due: $300.66</span>
+                </div>
+
+                <div class="bills-list">
+                    <div class="bill-item due-soon">
+                        <div class="bill-info">
+                            <div class="bill-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="bill-name">Electric Company</div>
+                                <div class="bill-date">Due in 3 days · Mar 19, 2024</div>
+                            </div>
+                        </div>
+                        <div class="bill-amount">$145.67</div>
+                        <button class="pay-now-btn" onclick="quickPay('Electric Company', 145.67)">
+                            Pay Now
+                        </button>
+                    </div>
+
+                    <div class="bill-item">
+                        <div class="bill-info">
+                            <div class="bill-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <div>
+                                <div class="bill-name">Internet Service</div>
+                                <div class="bill-date">Due in 5 days · Mar 21, 2024</div>
+                            </div>
+                        </div>
+                        <div class="bill-amount">$89.99</div>
+                        <button class="pay-now-btn" onclick="quickPay('Internet Service', 89.99)">
+                            Pay Now
+                        </button>
+                    </div>
+
+                    <div class="bill-item">
+                        <div class="bill-info">
+                            <div class="bill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <div class="bill-name">Phone Company</div>
+                                <div class="bill-date">Due in 7 days · Mar 23, 2024</div>
+                            </div>
+                        </div>
+                        <div class="bill-amount">$65.00</div>
+                        <button class="pay-now-btn" onclick="quickPay('Phone Company', 65.00)">
+                            Pay Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scheduled Bills -->
+            <div class="scheduled-bills" id="scheduledBills" style="display: none;">
+                <div class="section-header">
+                    <h3>Scheduled Payments</h3>
+                </div>
+
+                <div class="bills-list">
+                    <div class="bill-item scheduled">
+                        <div class="bill-info">
+                            <div class="bill-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div>
+                                <div class="bill-name">Water Utility</div>
+                                <div class="bill-date">Scheduled for Apr 1, 2024</div>
+                            </div>
+                        </div>
+                        <div class="bill-amount">$45.00</div>
+                        <div class="bill-status recurring">Monthly</div>
+                    </div>
+
+                    <div class="bill-item scheduled">
+                        <div class="bill-info">
+                            <div class="bill-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div>
+                                <div class="bill-name">Credit Card Payment</div>
+                                <div class="bill-date">Scheduled for Apr 5, 2024</div>
+                            </div>
+                        </div>
+                        <div class="bill-amount">$234.56</div>
+                        <div class="bill-status">One-time</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payees List -->
+            <div class="payees-list" id="payeesList" style="display: none;">
+                <div class="section-header">
+                    <h3>Saved Payees</h3>
+                    <button class="add-payee-btn" onclick="addPayee()">
+                        <i class="fas fa-plus"></i>
+                        Add Payee
+                    </button>
+                </div>
+
+                <div class="payees-grid">
+                    <div class="payee-card">
+                        <div class="payee-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="payee-info">
+                            <div class="payee-name">Electric Company</div>
+                            <div class="payee-account">Account: 123456789</div>
+                        </div>
+                        <button class="payee-action" onclick="editPayee('Electric Company')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+
+                    <div class="payee-card">
+                        <div class="payee-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="payee-info">
+                            <div class="payee-name">Internet Service</div>
+                            <div class="payee-account">Account: 987654321</div>
+                        </div>
+                        <button class="payee-action" onclick="editPayee('Internet Service')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+
+                    <div class="payee-card">
+                        <div class="payee-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="payee-info">
+                            <div class="payee-name">Phone Company</div>
+                            <div class="payee-account">Account: 555123456</div>
+                        </div>
+                        <button class="payee-action" onclick="editPayee('Phone Company')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+
+                    <div class="payee-card">
+                        <div class="payee-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="payee-info">
+                            <div class="payee-name">Water Utility</div>
+                            <div class="payee-account">Account: 777888999</div>
+                        </div>
+                        <button class="payee-action" onclick="editPayee('Water Utility')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Payment Confirmation Modal -->
+    <div class="modal-premium" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Payment</h2>
+                <button class="modal-close" onclick="closeModal('paymentModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span>Pay To:</span>
+                        <span class="summary-value" id="confirmPayee">Electric Company</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Amount:</span>
+                        <span class="summary-value" id="confirmAmount">$145.67</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>From:</span>
+                        <span class="summary-value">Checking Account</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Date:</span>
+                        <span class="summary-value">March 20, 2024</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('paymentModal')">Cancel</button>
+                <button class="btn-primary" onclick="confirmPayment()">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-premium" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Payment Successful</h2>
+                <button class="modal-close" onclick="closeModal('successModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Your payment has been processed successfully.</p>
+                <div class="payment-reference">
+                    Reference: BILL-20240316-001
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal('successModal')">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Switch between bill tabs
+        function switchBillTab(tab) {
+            document.querySelectorAll('.bill-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Hide all sections
+            document.getElementById('upcomingBills').style.display = 'none';
+            document.getElementById('scheduledBills').style.display = 'none';
+            document.getElementById('payeesList').style.display = 'none';
+
+            // Show selected section
+            if (tab === 'upcoming') {
+                document.getElementById('upcomingBills').style.display = 'block';
+            } else if (tab === 'scheduled') {
+                document.getElementById('scheduledBills').style.display = 'block';
+            } else if (tab === 'payees') {
+                document.getElementById('payeesList').style.display = 'block';
+            }
+        }
+
+        // Quick pay
+        function quickPay(payee, amount) {
+            document.getElementById('confirmPayee').textContent = payee;
+            document.getElementById('confirmAmount').textContent = '$' + amount;
+            document.getElementById('billAmount').value = amount;
+            
+            // Set the payee in select
+            const select = document.getElementById('payeeSelect');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].text.includes(payee)) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+
+            document.getElementById('paymentModal').classList.add('show');
+        }
+
+        // Pay bill
+        function payBill() {
+            const payee = document.getElementById('payeeSelect').selectedOptions[0].text;
+            const amount = document.getElementById('billAmount').value;
+            quickPay(payee, amount);
+        }
+
+        // Schedule bill
+        function scheduleBill() {
+            alert('Bill scheduled for later (demo)');
+        }
+
+        // Confirm payment
+        function confirmPayment() {
+            closeModal('paymentModal');
+            document.getElementById('successModal').classList.add('show');
+        }
+
+        // Add payee
+        function addPayee() {
+            alert('Add new payee (demo)');
+        }
+
+        // Edit payee
+        function editPayee(payee) {
+            alert('Edit ' + payee + ' (demo)');
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-premium')) {
+                event.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                                <span class="nav-badge">12</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Transactions</h1>
+                        <p>View and manage your transaction history</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search transactions...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Transactions Page Content -->
+            <div class="transactions-page">
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All Transactions</button>
+                        <button class="filter-tab">Income</button>
+                        <button class="filter-tab">Expenses</button>
+                        <button class="filter-tab">Transfers</button>
+                        <button class="filter-tab">Pending</button>
+                    </div>
+
+                    <div class="filter-actions">
+                        <div class="date-range">
+                            <i class="far fa-calendar"></i>
+                            <span>Last 30 days</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        
+                        <button class="filter-btn">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        
+                        <button class="filter-btn">
+                            <i class="fas fa-filter"></i>
+                            Filter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transactions Summary -->
+                <div class="transactions-summary">
+                    <div class="summary-stat">
+                        <span class="stat-label">Total Inflow</span>
+                        <span class="stat-value positive">+$12,450.00</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-label">Total Outflow</span>
+                        <span class="stat-value negative">-$8,234.56</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-label">Net Change</span>
+                        <span class="stat-value positive">+$4,215.44</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-label">Transactions</span>
+                        <span class="stat-value">48</span>
+                    </div>
+                </div>
+
+                <!-- Transactions List -->
+                <div class="transactions-list-premium">
+                    <!-- Date Group -->
+                    <div class="transaction-group">
+                        <div class="group-header">
+                            <h3>Today, March 15, 2024</h3>
+                            <span class="group-total">3 transactions</span>
+                        </div>
+
+                        <div class="group-transactions">
+                            <!-- Transaction Item -->
+                            <div class="transaction-item">
+                                <div class="transaction-icon transfer">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-main">
+                                        <span class="transaction-name">Transfer to Sarah Johnson</span>
+                                        <span class="transaction-category">Transfer</span>
+                                    </div>
+                                    <div class="transaction-meta">
+                                        <span class="transaction-time">9:42 AM</span>
+                                        <span class="transaction-account">Checking ****1234</span>
+                                    </div>
+                                </div>
+                                <div class="transaction-amount">
+                                    <span class="amount negative">-$250.00</span>
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                                <button class="transaction-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+
+                            <!-- Transaction Item -->
+                            <div class="transaction-item">
+                                <div class="transaction-icon deposit">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-main">
+                                        <span class="transaction-name">Salary Deposit - ABC Corp</span>
+                                        <span class="transaction-category">Income</span>
+                                    </div>
+                                    <div class="transaction-meta">
+                                        <span class="transaction-time">8:00 AM</span>
+                                        <span class="transaction-account">Checking ****1234</span>
+                                    </div>
+                                </div>
+                                <div class="transaction-amount">
+                                    <span class="amount positive">+$3,500.00</span>
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                                <button class="transaction-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date Group -->
+                    <div class="transaction-group">
+                        <div class="group-header">
+                            <h3>Yesterday, March 14, 2024</h3>
+                            <span class="group-total">2 transactions</span>
+                        </div>
+
+                        <div class="group-transactions">
+                            <!-- Transaction Item -->
+                            <div class="transaction-item">
+                                <div class="transaction-icon payment">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-main">
+                                        <span class="transaction-name">Amazon.com</span>
+                                        <span class="transaction-category">Shopping</span>
+                                    </div>
+                                    <div class="transaction-meta">
+                                        <span class="transaction-time">3:15 PM</span>
+                                        <span class="transaction-account">Checking ****1234</span>
+                                    </div>
+                                </div>
+                                <div class="transaction-amount">
+                                    <span class="amount negative">-$89.99</span>
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                                <button class="transaction-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+
+                            <!-- Transaction Item -->
+                            <div class="transaction-item">
+                                <div class="transaction-icon bill">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-main">
+                                        <span class="transaction-name">The Italian Restaurant</span>
+                                        <span class="transaction-category">Dining</span>
+                                    </div>
+                                    <div class="transaction-meta">
+                                        <span class="transaction-time">7:30 PM</span>
+                                        <span class="transaction-account">Checking ****1234</span>
+                                    </div>
+                                </div>
+                                <div class="transaction-amount">
+                                    <span class="amount negative">-$78.50</span>
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                                <button class="transaction-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date Group -->
+                    <div class="transaction-group">
+                        <div class="group-header">
+                            <h3>March 12, 2024</h3>
+                            <span class="group-total">1 transaction</span>
+                        </div>
+
+                        <div class="group-transactions">
+                            <!-- Transaction Item with Pending Status -->
+                            <div class="transaction-item pending">
+                                <div class="transaction-icon bill">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-main">
+                                        <span class="transaction-name">Electric Company</span>
+                                        <span class="transaction-category">Utilities</span>
+                                    </div>
+                                    <div class="transaction-meta">
+                                        <span class="transaction-time">10:00 AM</span>
+                                        <span class="transaction-account">Checking ****1234</span>
+                                    </div>
+                                </div>
+                                <div class="transaction-amount">
+                                    <span class="amount negative">-$145.67</span>
+                                    <span class="status-badge pending">Pending</span>
+                                </div>
+                                <button class="transaction-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-premium">
+                    <button class="page-nav disabled">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    
+                    <div class="page-numbers">
+                        <button class="page-number active">1</button>
+                        <button class="page-number">2</button>
+                        <button class="page-number">3</button>
+                        <button class="page-number">4</button>
+                        <span class="page-dots">...</span>
+                        <button class="page-number">12</button>
+                    </div>
+                    
+                    <button class="page-nav">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Transaction Details Modal -->
+    <div class="modal-premium" id="transactionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Transaction Details</h2>
+                <button class="modal-close" onclick="closeTransactionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="transaction-detail-card">
+                    <div class="detail-icon transfer">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="detail-rows">
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction ID</span>
+                            <span class="detail-value">TRX-20240315-001</span>
+                            <button class="copy-btn-small">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Description</span>
+                            <span class="detail-value">Transfer to Sarah Johnson</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Date & Time</span>
+                            <span class="detail-value">March 15, 2024 · 9:42 AM</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value amount negative">-$250.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value">
+                                <span class="status-badge completed">Completed</span>
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">From</span>
+                            <span class="detail-value">Checking Account (****1234)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">To</span>
+                            <span class="detail-value">Sarah Johnson (****4567)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Bank</span>
+                            <span class="detail-value">Chase Bank</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Reference</span>
+                            <span class="detail-value">REF-123456789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="downloadReceipt()">
+                    <i class="fas fa-download"></i>
+                    Download Receipt
+                </button>
+                <button class="btn-primary" onclick="closeTransactionModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Transaction item click (show details)
+        document.querySelectorAll('.transaction-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (!e.target.closest('.transaction-menu')) {
+                    document.getElementById('transactionModal').classList.add('show');
+                }
+            });
+        });
+
+        // Transaction menu button
+        document.querySelectorAll('.transaction-menu').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Show dropdown menu (simplified)
+                alert('Transaction options would appear here');
+            });
+        });
+
+        // Close modal
+        function closeTransactionModal() {
+            document.getElementById('transactionModal').classList.remove('show');
+        }
+
+        // Download receipt
+        function downloadReceipt() {
+            alert('Receipt download would start (demo)');
+        }
+
+        // Copy reference
+        document.querySelectorAll('.copy-btn-small').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const reference = this.parentElement.querySelector('.detail-value').textContent;
+                navigator.clipboard.writeText(reference);
+                
+                this.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 1500);
+            });
+        });
+
+        // Date range picker (simplified)
+        document.querySelector('.date-range').addEventListener('click', function() {
+            alert('Date range picker would open');
+        });
+
+        // Export button
+        document.querySelector('.filter-btn i.fa-download').parentElement.addEventListener('click', function() {
+            alert('Exporting transactions... (demo)');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('transactionModal');
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

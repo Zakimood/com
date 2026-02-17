@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Bank Selection Styles */
+        .bank-type-selector {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 8px;
+            background: #F8FAFC;
+            border-radius: 12px;
+        }
+
+        .bank-type-btn {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748B;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .bank-type-btn i {
+            font-size: 16px;
+        }
+
+        .bank-type-btn.active {
+            background: white;
+            color: #0A2472;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .bank-lookup-field {
+            position: relative;
+        }
+
+        .bank-lookup-field input {
+            padding-right: 100px !important;
+        }
+
+        .lookup-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 6px 16px;
+            background: #0A2472;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lookup-btn:hover:not(:disabled) {
+            background: #1E3A8A;
+        }
+
+        .lookup-btn:disabled {
+            background: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        .bank-info-display {
+            margin-top: 12px;
+            padding: 16px;
+            background: #F8FAFC;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            display: none;
+        }
+
+        .bank-info-display.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bank-info-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .bank-logo {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #0A2472;
+            border: 1px solid #E2E8F0;
+        }
+
+        .bank-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 2px;
+        }
+
+        .bank-info p {
+            font-size: 13px;
+            color: #64748B;
+            margin: 0;
+        }
+
+        .bank-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .bank-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0F172A;
+        }
+
+        /* Failure Modal */
+        .failure-modal {
+            background: white;
+            border-radius: 32px;
+            max-width: 450px;
+            width: 100%;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .failure-icon {
+            width: 80px;
+            height: 80px;
+            background: #FEF2F2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .failure-icon i {
+            font-size: 40px;
+            color: #EF4444;
+        }
+
+        .failure-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #EF4444;
+            margin-bottom: 12px;
+        }
+
+        .failure-reason {
+            background: #F8FAFC;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .reason-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: #EF4444;
+            font-weight: 600;
+        }
+
+        .reason-header i {
+            font-size: 16px;
+        }
+
+        .reason-text {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .error-code {
+            font-family: monospace;
+            font-size: 12px;
+            color: #64748B;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .support-info {
+            border-top: 1px solid #E2E8F0;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .support-info p {
+            font-size: 13px;
+            color: #64748B;
+            margin-bottom: 12px;
+        }
+
+        .support-btn {
+            padding: 12px 24px;
+            background: #0A2472;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .support-btn:hover {
+            background: #1E3A8A;
+        }
+
+        /* Format hint */
+        .format-hint {
+            font-size: 11px;
+            color: #94A3B8;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .format-hint i {
+            font-size: 12px;
+        }
+
+        .format-hint span {
+            font-family: monospace;
+            background: #F1F5F9;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$5,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$15,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Transfer Money</h1>
+                        <p>Securely send money to any account</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Transfer Page Content -->
+            <div class="transfer-page">
+                <!-- Account Selection Bar -->
+                <div class="account-selector-bar">
+                    <div class="selector-label">Transfer from:</div>
+                    <div class="account-pills">
+                        <div class="account-pill active">
+                            <i class="fas fa-wallet"></i>
+                            <div>
+                                <span class="pill-label">Checking</span>
+                                <span class="pill-amount">$645,432.10</span>
+                            </div>
+                            <span class="pill-badge">Main</span>
+                        </div>
+                        <div class="account-pill">
+                            <i class="fas fa-piggy-bank"></i>
+                            <div>
+                                <span class="pill-label">Savings</span>
+                                <span class="pill-amount">$215,678.90</span>
+                            </div>
+                        </div>
+                        <div class="account-pill">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <span class="pill-label">Premium Credit</span>
+                                <span class="pill-amount">$28,234.56</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Transfer Grid -->
+                <div class="transfer-grid">
+                    <!-- Left Column - Transfer Form -->
+                    <div class="transfer-form-card">
+                        <div class="form-header">
+                            <h2>Transfer Details</h2>
+                            <span class="form-badge">Secure Transaction</span>
+                        </div>
+
+                        <form id="transferForm" class="premium-form">
+                            <!-- Bank Type Selector -->
+                            <div class="bank-type-selector">
+                                <button type="button" class="bank-type-btn active" onclick="setBankType('us')">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    US Bank
+                                </button>
+                                <button type="button" class="bank-type-btn" onclick="setBankType('uk')">
+                                    <i class="fas fa-pound-sign"></i>
+                                    UK Bank
+                                </button>
+                                <button type="button" class="bank-type-btn" onclick="setBankType('other')">
+                                    <i class="fas fa-globe"></i>
+                                    Other
+                                </button>
+                            </div>
+
+                            <!-- Recipient Section -->
+                            <div class="form-section">
+                                <h3>Recipient Information</h3>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Recipient Name</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" placeholder="Full name" id="recipientName" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- US Bank Fields -->
+                                <div id="usBankFields">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Routing Number</label>
+                                            <div class="bank-lookup-field">
+                                                <div class="input-wrapper">
+                                                    <i class="fas fa-university"></i>
+                                                    <input type="text" placeholder="9-digit routing number" id="routingNumber" maxlength="9" pattern="[0-9]{9}">
+                                                </div>
+                                                <button type="button" class="lookup-btn" onclick="lookupBank()" id="lookupBtn">Lookup</button>
+                                            </div>
+                                            <div class="format-hint">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>9 digits</span> (e.g., 021000021)
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Account Number</label>
+                                            <div class="input-wrapper">
+                                                <i class="fas fa-hashtag"></i>
+                                                <input type="text" placeholder="Account number" id="accountNumber" pattern="[0-9]{10,12}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- UK Bank Fields -->
+                                <div id="ukBankFields" style="display: none;">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Sort Code</label>
+                                            <div class="bank-lookup-field">
+                                                <div class="input-wrapper">
+                                                    <i class="fas fa-code-branch"></i>
+                                                    <input type="text" placeholder="XX-XX-XX or 6 digits" id="sortCode" maxlength="8">
+                                                </div>
+                                                <button type="button" class="lookup-btn" onclick="lookupUKBank()" id="lookupUKBtn">Lookup</button>
+                                            </div>
+                                            <div class="format-hint">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>12-34-56</span> or <span>123456</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Account Number</label>
+                                            <div class="input-wrapper">
+                                                <i class="fas fa-hashtag"></i>
+                                                <input type="text" placeholder="8-digit account number" id="ukAccountNumber" pattern="[0-9]{8}">
+                                            </div>
+                                            <div class="format-hint">
+                                                <i class="fas fa-info-circle"></i>
+                                                <span>8 digits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Other International Fields -->
+                                <div id="otherBankFields" style="display: none;">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>SWIFT/BIC Code</label>
+                                            <div class="input-wrapper">
+                                                <i class="fas fa-globe"></i>
+                                                <input type="text" placeholder="8 or 11 characters" id="swiftCode">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>IBAN</label>
+                                            <div class="input-wrapper">
+                                                <i class="fas fa-passport"></i>
+                                                <input type="text" placeholder="International IBAN" id="iban">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bank Info Display (auto-filled from lookup) -->
+                                <div id="bankInfoDisplay" class="bank-info-display">
+                                    <div class="bank-info-header">
+                                        <div class="bank-logo" id="bankLogo">
+                                            <i class="fas fa-university"></i>
+                                        </div>
+                                        <div class="bank-info">
+                                            <h4 id="bankName">Bank of America</h4>
+                                            <p id="bankAddress">123 Financial District, New York, NY</p>
+                                        </div>
+                                    </div>
+                                    <div class="bank-details-grid">
+                                        <div class="bank-detail-item">
+                                            <span class="detail-label">Routing/Sort Code</span>
+                                            <span class="detail-value" id="bankCode">021000021</span>
+                                        </div>
+                                        <div class="bank-detail-item">
+                                            <span class="detail-label">SWIFT/BIC</span>
+                                            <span class="detail-value" id="bankSwift">BOFAUS3N</span>
+                                        </div>
+                                        <div class="bank-detail-item">
+                                            <span class="detail-label">Phone</span>
+                                            <span class="detail-value" id="bankPhone">1-800-123-4567</span>
+                                        </div>
+                                        <div class="bank-detail-item">
+                                            <span class="detail-label">Established</span>
+                                            <span class="detail-value" id="bankEst">1998</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transfer Section -->
+                            <div class="form-section">
+                                <h3>Transfer Information</h3>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <div class="input-wrapper amount">
+                                            <span class="currency-symbol">$</span>
+                                            <input type="number" placeholder="0.00" id="amount" required min="0.01" step="0.01">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Transfer Date</label>
+                                        <div class="input-wrapper">
+                                            <i class="fas fa-calendar"></i>
+                                            <input type="date" id="transferDate" value="2024-03-16">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description (Optional)</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-pen"></i>
+                                        <input type="text" placeholder="What's this for?" id="description">
+                                    </div>
+                                </div>
+
+                                <!-- Transfer Options -->
+                                <div class="transfer-options">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="saveRecipient">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-text">Save this recipient for future transfers</span>
+                                    </label>
+
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="scheduleTransfer">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-text">Schedule recurring transfer</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Fee Information -->
+                            <div class="fee-info">
+                                <div class="fee-item">
+                                    <span>Transfer Fee</span>
+                                    <span class="free">Free</span>
+                                </div>
+                                <div class="fee-item">
+                                    <span>Estimated Arrival</span>
+                                    <span>Same Business Day</span>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="window.location.href='dashboard.html'">
+                                    Cancel
+                                </button>
+                                <button type="button" class="btn-primary" onclick="reviewTransfer()">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Review Transfer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Right Column - Quick Info -->
+                    <div class="transfer-info-card">
+                        <!-- Recent Recipients -->
+                        <div class="info-widget">
+                            <div class="widget-header">
+                                <h3>Recent Recipients</h3>
+                                <a href="#">View All</a>
+                            </div>
+                            <div class="recipients-list">
+                                <div class="recipient-item">
+                                    <div class="recipient-avatar">
+                                        <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=0A2472&color=fff&size=64" alt="Sarah Johnson">
+                                    </div>
+                                    <div class="recipient-details">
+                                        <span class="recipient-name">Sarah Johnson</span>
+                                        <span class="recipient-account">Chase ··· 4567</span>
+                                    </div>
+                                    <button class="recipient-action" onclick="fillRecipient('Sarah Johnson', 'Chase', '021000021', '1234567890')">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="recipient-item">
+                                    <div class="recipient-avatar">
+                                        <img src="https://ui-avatars.com/api/?name=Michael+Chen&background=2563EB&color=fff&size=64" alt="Michael Chen">
+                                    </div>
+                                    <div class="recipient-details">
+                                        <span class="recipient-name">Michael Chen</span>
+                                        <span class="recipient-account">Barclays ··· 8901</span>
+                                    </div>
+                                    <button class="recipient-action" onclick="fillRecipientUK('Michael Chen', 'Barclays', '20-00-00', '12345678')">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="recipient-item">
+                                    <div class="recipient-avatar">
+                                        <img src="https://ui-avatars.com/api/?name=Emily+Williams&background=7C3AED&color=fff&size=64" alt="Emily Williams">
+                                    </div>
+                                    <div class="recipient-details">
+                                        <span class="recipient-name">Emily Williams</span>
+                                        <span class="recipient-account">HSBC ··· 2345</span>
+                                    </div>
+                                    <button class="recipient-action" onclick="fillRecipientUK('Emily Williams', 'HSBC', '40-00-00', '87654321')">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transfer Limits -->
+                        <div class="info-widget">
+                            <div class="widget-header">
+                                <h3>Transfer Limits</h3>
+                                <i class="fas fa-info-circle" title="Daily transfer limits"></i>
+                            </div>
+                            <div class="limits-list">
+                                <div class="limit-item">
+                                    <span class="limit-label">Per Transaction</span>
+                                    <span class="limit-value">$10,000</span>
+                                </div>
+                                <div class="limit-item">
+                                    <span class="limit-label">Daily Limit</span>
+                                    <span class="limit-value">$25,000</span>
+                                </div>
+                                <div class="limit-item">
+                                    <span class="limit-label">Monthly Limit</span>
+                                    <span class="limit-value">$50,000</span>
+                                </div>
+                                <div class="limit-progress">
+                                    <div class="progress-label">
+                                        <span>Used today</span>
+                                        <span>$250 of $25,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 1%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Notice -->
+                        <div class="security-notice-widget">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Bank-Grade Security</h4>
+                                <p>All transfers are encrypted and monitored 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Review Transfer Modal -->
+    <div class="modal-premium" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Review Transfer</h2>
+                <button class="modal-close" onclick="closeModal('reviewModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="transfer-summary">
+                    <div class="summary-amount">
+                        <span class="label">Amount</span>
+                        <span class="amount" id="reviewAmount">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-details">
+                        <div class="detail-row">
+                            <span class="detail-label">From</span>
+                            <span class="detail-value" id="reviewFrom">Checking Account</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">To</span>
+                            <span class="detail-value" id="reviewTo"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Bank</span>
+                            <span class="detail-value" id="reviewBank"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account</span>
+                            <span class="detail-value" id="reviewAccount"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Routing/Sort Code</span>
+                            <span class="detail-value" id="reviewRouting"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Description</span>
+                            <span class="detail-value" id="reviewDescription"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Transfer Date</span>
+                            <span class="detail-value" id="reviewDate"></span>
+                        </div>
+                    </div>
+
+                    <div class="summary-fees">
+                        <div class="fee-row">
+                            <span>Transfer Amount</span>
+                            <span id="reviewTransferAmount">$0.00</span>
+                        </div>
+                        <div class="fee-row">
+                            <span>Fee</span>
+                            <span class="free">$0.00</span>
+                        </div>
+                        <div class="fee-row total">
+                            <span>Total Debit</span>
+                            <span id="reviewTotal">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="security-confirmation">
+                    <i class="fas fa-lock"></i>
+                    <p>This transfer is protected by multi-factor authentication and encryption</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('reviewModal')">Edit</button>
+                <button class="btn-primary" onclick="processTransfer()">
+                    <i class="fas fa-check-circle"></i>
+                    Confirm Transfer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure Modal (instead of success) -->
+    <div class="modal-premium" id="failureModal">
+        <div class="failure-modal">
+            <div class="failure-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="failure-title">Transfer Failed</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">We could not process your transfer at this time.</p>
+            
+            <div class="failure-reason" id="failureReason">
+                <!-- Dynamic failure reason will be inserted here -->
+            </div>
+
+            <div class="support-info">
+                <p>Our support team has been notified. Please contact us for assistance.</p>
+                <button class="support-btn" onclick="contactSupport()">
+                    <i class="fas fa-headset"></i>
+                    Contact Support
+                </button>
+            </div>
+
+            <button class="btn-secondary" onclick="closeModal('failureModal')" style="margin-top: 16px; width: 100%;">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Add this Loading Modal after the Failure Modal -->
+<div class="modal-premium" id="loadingModal">
+    <div class="modal-content" style="text-align: center; padding: 40px;">
+        <div class="loading-spinner" style="margin-bottom: 24px;">
+            <i class="fas fa-circle-notch fa-spin" style="font-size: 48px; color: #0A2472;"></i>
+        </div>
+        <h3 style="color: #0F172A; margin-bottom: 8px;">Processing Transfer</h3>
+        <p style="color: #64748B; margin-bottom: 16px;">Please wait while we verify and process your transfer...</p>
+        <div class="progress-bar" style="height: 4px; background: #E2E8F0; border-radius: 4px; overflow: hidden; max-width: 300px; margin: 0 auto;">
+            <div class="progress-fill" id="loadingProgress" style="width: 0%; height: 100%; background: #0A2472; transition: width 0.3s ease;"></div>
+        </div>
+        <p style="color: #94A3B8; font-size: 12px; margin-top: 16px;" id="loadingStatus">Initiating transfer...</p>
+    </div>
+</div>
+
+    <script>
+    // Bank database (demo)
+    const usBanks = {
+        '021000021': {
+            name: 'JPMorgan Chase Bank',
+            address: '270 Park Avenue, New York, NY 10017',
+            swift: 'CHASUS33',
+            phone: '1-800-935-9935',
+            established: '1799',
+            type: 'Commercial Bank'
+        },
+        '121000358': {
+            name: 'Wells Fargo Bank',
+            address: '420 Montgomery Street, San Francisco, CA 94104',
+            swift: 'WFBIUS6S',
+            phone: '1-800-869-3557',
+            established: '1852',
+            type: 'Commercial Bank'
+        },
+        '026009593': {
+            name: 'Bank of America',
+            address: '100 North Tryon Street, Charlotte, NC 28255',
+            swift: 'BOFAUS3N',
+            phone: '1-800-432-1000',
+            established: '1904',
+            type: 'Commercial Bank'
+        },
+        '071000013': {
+            name: 'Citibank',
+            address: '399 Park Avenue, New York, NY 10022',
+            swift: 'CITIUS33',
+            phone: '1-800-374-9700',
+            established: '1812',
+            type: 'Commercial Bank'
+        }
+    };
+
+    const ukBanks = {
+        '20-00-00': {
+            name: 'Barclays Bank',
+            address: '1 Churchill Place, London E14 5HP',
+            swift: 'BARCGB22',
+            phone: '+44 2476 842 000',
+            established: '1690',
+            type: 'High Street Bank'
+        },
+        '40-00-00': {
+            name: 'HSBC Bank',
+            address: '8 Canada Square, London E14 5HQ',
+            swift: 'MIDLGB22',
+            phone: '+44 345 740 4404',
+            established: '1865',
+            type: 'High Street Bank'
+        },
+        '60-00-00': {
+            name: 'Lloyds Bank',
+            address: '25 Gresham Street, London EC2V 7HN',
+            swift: 'LOYDGB2L',
+            phone: '+44 345 300 0000',
+            established: '1765',
+            type: 'High Street Bank'
+        },
+        '16-00-00': {
+            name: 'NatWest Bank',
+            address: '250 Bishopsgate, London EC2M 4AA',
+            swift: 'NWBKGB2L',
+            phone: '+44 345 788 8444',
+            established: '1968',
+            type: 'High Street Bank'
+        },
+        '30-00-00': {
+            name: 'Santander UK',
+            address: '2 Triton Square, London NW1 3AN',
+            swift: 'ABBYGB2L',
+            phone: '+44 800 912 3123',
+            established: '2010',
+            type: 'High Street Bank'
+        }
+    };
+
+    // Failure reasons array (0% success rate)
+    const failureReasons = [
+        {
+            title: 'Account Dormancy',
+            icon: 'fa-bed',
+            message: 'The recipient account has been inactive for over 3 years and requires reactivation before receiving funds.',
+            code: 'ERR-ACC-DORMANT-001',
+            details: 'Accounts with no activity for 36+ months are automatically frozen for security.'
+        },
+        {
+            title: 'Bank Under Regulatory Review',
+            icon: 'fa-gavel',
+            message: 'The recipient bank is currently under regulatory supervision and all outgoing/incoming transfers have been temporarily suspended.',
+            code: 'ERR-BANK-REG-023',
+            details: 'Financial institutions under regulatory review cannot process transfers until clearance is obtained.'
+        },
+        {
+            title: 'Sanctions Restrictions',
+            icon: 'fa-ban',
+            message: 'The recipient bank is located in a jurisdiction with current international sanctions restrictions.',
+            code: 'ERR-SANCTION-045',
+            details: 'International transfers to sanctioned regions are prohibited by federal law.'
+        },
+        {
+            title: 'Bank Insolvency Proceedings',
+            icon: 'fa-chart-line',
+            message: 'The recipient bank has filed for bankruptcy protection. All transfers have been frozen by the FDIC.',
+            code: 'ERR-BANK-BK-078',
+            details: 'When a bank enters receivership, all transactions are halted pending investigation.'
+        },
+        {
+            title: 'Routing Number Mismatch',
+            icon: 'fa-code-branch',
+            message: 'The routing number provided corresponds to a bank that was acquired in 2019 and no longer operates independently.',
+            code: 'ERR-ROUTING-156',
+            details: 'Bank mergers and acquisitions can render routing numbers obsolete.'
+        },
+        {
+            title: 'Account Frozen by Court Order',
+            icon: 'fa-gavel',
+            message: 'The recipient account is currently frozen due to a court order. No transactions can be processed.',
+            code: 'ERR-LEGAL-234',
+            details: 'Legal holds prevent any movement of funds from affected accounts.'
+        },
+        {
+            title: 'Suspicious Activity Alert',
+            icon: 'fa-shield-alt',
+            message: 'Our fraud detection system has flagged this transaction as potentially suspicious. Transfer blocked for security.',
+            code: 'ERR-FRAUD-789',
+            details: 'This transfer has been blocked to protect your account from unauthorized activity.'
+        },
+        {
+            title: 'Bank System Migration',
+            icon: 'fa-database',
+            message: 'The recipient bank is currently undergoing a core system migration. All transfers are delayed until completion.',
+            code: 'ERR-SYS-567',
+            details: 'System upgrades can take 48-72 hours, during which transfers cannot be processed.'
+        },
+        {
+            title: 'Currency Restrictions',
+            icon: 'fa-money-bill-wave',
+            message: 'The recipient country has imposed temporary currency export restrictions.',
+            code: 'ERR-CURRENCY-890',
+            details: 'Local regulations prevent the conversion and transfer of funds at this time.'
+        },
+        {
+            title: 'Beneficiary Account Closed',
+            icon: 'fa-door-closed',
+            message: 'The beneficiary account was closed 6 months ago. The account number is no longer valid.',
+            code: 'ERR-ACC-CLOSED-432',
+            details: 'Funds cannot be transferred to closed accounts. Please verify recipient details.'
+        }
+    ];
+
+    let currentBankType = 'us';
+    let lookupTimeout;
+
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+        document.querySelector('.sidebar-premium').classList.toggle('active');
+    });
+
+    // Set bank type and show relevant fields
+    function setBankType(type) {
+        currentBankType = type;
+        
+        // Update active button
+        document.querySelectorAll('.bank-type-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+
+        // Hide all bank fields
+        document.getElementById('usBankFields').style.display = 'none';
+        document.getElementById('ukBankFields').style.display = 'none';
+        document.getElementById('otherBankFields').style.display = 'none';
+        document.getElementById('bankInfoDisplay').classList.remove('show');
+
+        // Show selected fields
+        if (type === 'us') {
+            document.getElementById('usBankFields').style.display = 'block';
+        } else if (type === 'uk') {
+            document.getElementById('ukBankFields').style.display = 'block';
+        } else {
+            document.getElementById('otherBankFields').style.display = 'block';
+        }
+    }
+
+    // Show mini loading indicator
+    function showLoadingIndicator(field) {
+        const wrapper = field.closest('.bank-lookup-field');
+        if (wrapper) {
+            const loadingIcon = document.createElement('i');
+            loadingIcon.className = 'fas fa-circle-notch fa-spin';
+            loadingIcon.style.position = 'absolute';
+            loadingIcon.style.right = '16px';
+            loadingIcon.style.top = '50%';
+            loadingIcon.style.transform = 'translateY(-50%)';
+            loadingIcon.style.color = '#0A2472';
+            loadingIcon.style.fontSize = '16px';
+            loadingIcon.id = 'lookupLoading';
+            
+            // Remove any existing loading icon
+            const existing = document.getElementById('lookupLoading');
+            if (existing) existing.remove();
+            
+            wrapper.appendChild(loadingIcon);
+        }
+    }
+
+    // Hide loading indicator
+    function hideLoadingIndicator() {
+        const existing = document.getElementById('lookupLoading');
+        if (existing) existing.remove();
+    }
+
+    // Lookup US bank by routing number (auto)
+    function autoLookupUSBank() {
+        const routingField = document.getElementById('routingNumber');
+        const routingNumber = routingField.value.replace(/\D/g, '');
+        
+        if (routingNumber.length === 9) {
+            showLoadingIndicator(routingField);
+            
+            // Simulate network delay
+            setTimeout(() => {
+                hideLoadingIndicator();
+                
+                const bank = usBanks[routingNumber];
+                
+                if (bank) {
+                    document.getElementById('bankName').textContent = bank.name;
+                    document.getElementById('bankAddress').textContent = bank.address;
+                    document.getElementById('bankCode').textContent = routingNumber;
+                    document.getElementById('bankSwift').textContent = bank.swift;
+                    document.getElementById('bankPhone').textContent = bank.phone;
+                    document.getElementById('bankEst').textContent = bank.established;
+                    document.getElementById('bankInfoDisplay').classList.add('show');
+                    
+                    // Auto-focus account number
+                    document.getElementById('accountNumber').focus();
+                } else {
+                    document.getElementById('bankInfoDisplay').classList.remove('show');
+                }
+            }, 800); // 800ms loading simulation
+        } else {
+            document.getElementById('bankInfoDisplay').classList.remove('show');
+        }
+    }
+
+    // Lookup UK bank by sort code (auto)
+    function autoLookupUKBank() {
+        const sortCodeField = document.getElementById('sortCode');
+        let sortCode = sortCodeField.value.replace(/\D/g, '');
+        
+        if (sortCode.length === 6) {
+            showLoadingIndicator(sortCodeField);
+            
+            // Format for display
+            sortCode = sortCode.slice(0,2) + '-' + sortCode.slice(2,4) + '-' + sortCode.slice(4,6);
+            
+            // Simulate network delay
+            setTimeout(() => {
+                hideLoadingIndicator();
+                
+                const bank = ukBanks[sortCode] || ukBanks[sortCode.replace(/-/g, '')];
+                
+                if (bank) {
+                    document.getElementById('bankName').textContent = bank.name;
+                    document.getElementById('bankAddress').textContent = bank.address;
+                    document.getElementById('bankCode').textContent = sortCode;
+                    document.getElementById('bankSwift').textContent = bank.swift;
+                    document.getElementById('bankPhone').textContent = bank.phone;
+                    document.getElementById('bankEst').textContent = bank.established;
+                    document.getElementById('bankInfoDisplay').classList.add('show');
+                    
+                    // Auto-focus account number
+                    document.getElementById('ukAccountNumber').focus();
+                } else {
+                    document.getElementById('bankInfoDisplay').classList.remove('show');
+                }
+            }, 800); // 800ms loading simulation
+        } else {
+            document.getElementById('bankInfoDisplay').classList.remove('show');
+        }
+    }
+
+    // Fill recipient for US bank
+    function fillRecipient(name, bankName, routing, account) {
+        document.getElementById('recipientName').value = name;
+        document.getElementById('routingNumber').value = routing;
+        document.getElementById('accountNumber').value = account;
+        
+        // Trigger auto lookup
+        setTimeout(() => autoLookupUSBank(), 100);
+    }
+
+    // Fill recipient for UK bank
+    function fillRecipientUK(name, bankName, sortCode, account) {
+        setBankType('uk');
+        document.querySelector('[onclick="setBankType(\'uk\')"]').click();
+        
+        document.getElementById('recipientName').value = name;
+        document.getElementById('sortCode').value = sortCode;
+        document.getElementById('ukAccountNumber').value = account;
+        
+        // Trigger auto lookup
+        setTimeout(() => autoLookupUKBank(), 100);
+    }
+
+    // Review transfer
+    function reviewTransfer() {
+        const recipient = document.getElementById('recipientName').value;
+        let bank = '';
+        let account = '';
+        let routing = '';
+
+        if (currentBankType === 'us') {
+            bank = document.getElementById('bankName').textContent;
+            account = document.getElementById('accountNumber').value;
+            routing = document.getElementById('routingNumber').value;
+        } else if (currentBankType === 'uk') {
+            bank = document.getElementById('bankName').textContent;
+            account = document.getElementById('ukAccountNumber').value;
+            routing = document.getElementById('sortCode').value;
+        }
+
+        const amount = document.getElementById('amount').value;
+        const description = document.getElementById('description').value || 'No description';
+        const date = document.getElementById('transferDate').value;
+        const fromAccount = document.querySelector('.account-pill.active .pill-label').textContent;
+
+        // Validate
+        if (!recipient || !bank || bank === 'Bank of America' && !document.getElementById('bankInfoDisplay').classList.contains('show') || !account || !amount) {
+            alert('Please fill in all required fields and ensure bank details are verified');
+            return;
+        }
+
+        if (amount <= 0) {
+            alert('Please enter a valid amount');
+            return;
+        }
+
+        // Format for display
+        const formattedAmount = parseFloat(amount).toFixed(2);
+        
+        // Update review modal
+        document.getElementById('reviewAmount').textContent = `$${formattedAmount}`;
+        document.getElementById('reviewFrom').textContent = fromAccount + ' Account';
+        document.getElementById('reviewTo').textContent = recipient;
+        document.getElementById('reviewBank').textContent = bank;
+        document.getElementById('reviewAccount').textContent = '****' + account.slice(-4);
+        document.getElementById('reviewRouting').textContent = routing;
+        document.getElementById('reviewDescription').textContent = description;
+        document.getElementById('reviewDate').textContent = new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        document.getElementById('reviewTransferAmount').textContent = `$${formattedAmount}`;
+        document.getElementById('reviewTotal').textContent = `$${formattedAmount}`;
+
+        // Show modal
+        document.getElementById('reviewModal').classList.add('show');
+    }
+
+    // Process transfer with loading simulation (always fails)
+    function processTransfer() {
+        closeModal('reviewModal');
+        
+        // Show loading modal
+        document.getElementById('loadingModal').classList.add('show');
+        
+        // Simulate processing steps
+        const steps = [
+            { progress: 20, message: "Connecting to banking network..." },
+            { progress: 40, message: "Verifying recipient bank details..." },
+            { progress: 60, message: "Checking account validity..." },
+            { progress: 75, message: "Performing fraud detection scan..." },
+            { progress: 85, message: "Contacting recipient bank..." },
+            { progress: 95, message: "Finalizing transaction..." }
+        ];
+        
+        let currentStep = 0;
+        const progressBar = document.getElementById('loadingProgress');
+        const statusText = document.getElementById('loadingStatus');
+        
+        // Update progress every 800ms
+        const interval = setInterval(() => {
+            if (currentStep < steps.length) {
+                const step = steps[currentStep];
+                progressBar.style.width = step.progress + '%';
+                statusText.textContent = step.message;
+                currentStep++;
+            } else {
+                clearInterval(interval);
+                
+                // Hide loading modal after 1 second
+                setTimeout(() => {
+                    document.getElementById('loadingModal').classList.remove('show');
+                    
+                    // Get random failure reason
+                    const randomReason = failureReasons[Math.floor(Math.random() * failureReasons.length)];
+                    
+                    // Display failure modal with reason
+                    const failureDiv = document.getElementById('failureReason');
+                    failureDiv.innerHTML = `
+                        <div class="reason-header">
+                            <i class="fas ${randomReason.icon}"></i>
+                            <span>${randomReason.title}</span>
+                        </div>
+                        <div class="reason-text">
+                            ${randomReason.message}
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+                            <span class="error-code">Error Code: ${randomReason.code}</span>
+                            <i class="fas fa-info-circle" style="color: #94A3B8; cursor: pointer;" title="${randomReason.details}" onclick="showErrorDetails('${randomReason.details}')"></i>
+                        </div>
+                    `;
+                    
+                    document.getElementById('failureModal').classList.add('show');
+                }, 1000);
+            }
+        }, 800);
+    }
+
+    // Show error details in alert
+    function showErrorDetails(details) {
+        alert('Additional Error Details:\n\n' + details);
+    }
+
+    // Contact support
+    function contactSupport() {
+        const errorCode = document.querySelector('.error-code')?.textContent || 'Unknown';
+        alert(`Demo: Support team has been notified.\n\nError Reference: ${errorCode}\n\nA support representative will contact you within 15 minutes.`);
+        closeModal('failureModal');
+    }
+
+    // Close modal
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('show');
+    }
+
+    // Close modals when clicking outside
+    window.addEventListener('click', function(event) {
+        const reviewModal = document.getElementById('reviewModal');
+        const failureModal = document.getElementById('failureModal');
+        const loadingModal = document.getElementById('loadingModal');
+        
+        if (event.target === reviewModal) {
+            reviewModal.classList.remove('show');
+        }
+        if (event.target === failureModal) {
+            failureModal.classList.remove('show');
+        }
+        if (event.target === loadingModal) {
+            // Don't close loading modal when clicking outside - it should complete
+        }
+    });
+
+    // Account pill selection
+    document.querySelectorAll('.account-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            document.querySelectorAll('.account-pill').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Loading screen
+    setTimeout(() => {
+        document.querySelector('.premium-loader').classList.add('fade-out');
+    }, 800);
+
+    // Format sort code as user types
+    document.getElementById('sortCode')?.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 6) value = value.slice(0, 6);
+        
+        if (value.length > 4) {
+            value = value.slice(0,2) + '-' + value.slice(2,4) + '-' + value.slice(4,6);
+        } else if (value.length > 2) {
+            value = value.slice(0,2) + '-' + value.slice(2);
+        }
+        
+        e.target.value = value;
+    });
+
+    // Format routing number as user types
+    document.getElementById('routingNumber')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 9);
+    });
+
+    // Auto lookup on blur (when leaving the field)
+    document.getElementById('routingNumber')?.addEventListener('blur', function() {
+        autoLookupUSBank();
+    });
+
+    // Auto lookup on Enter key
+    document.getElementById('routingNumber')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            autoLookupUSBank();
+        }
+    });
+
+    // Auto lookup on blur for UK sort code
+    document.getElementById('sortCode')?.addEventListener('blur', function() {
+        autoLookupUKBank();
+    });
+
+    // Auto lookup on Enter key for UK sort code
+    document.getElementById('sortCode')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            autoLookupUKBank();
+        }
+    });
+
+    // Format account numbers
+    document.getElementById('accountNumber')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 12);
+    });
+
+    document.getElementById('ukAccountNumber')?.addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 8);
+    });
+
+    // Add click outside detection for the bank fields
+    document.addEventListener('click', function(event) {
+        const routingField = document.getElementById('routingNumber');
+        const sortCodeField = document.getElementById('sortCode');
+        
+        // If clicking outside routing field and it has 9 digits, trigger lookup
+        if (routingField && !routingField.contains(event.target) && routingField.value.replace(/\D/g, '').length === 9) {
+            autoLookupUSBank();
+        }
+        
+        // If clicking outside sort code field and it has 6 digits, trigger lookup
+        if (sortCodeField && !sortCodeField.contains(event.target) && sortCodeField.value.replace(/\D/g, '').length === 6) {
+            autoLookupUKBank();
+        }
+    });
+
+    // Set transfer date to current date
+function setCurrentDate() {
+    const dateInput = document.getElementById('transferDate');
+    if (dateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+    }
+}
+
+// Call when page loads
+document.addEventListener('DOMContentLoaded', setCurrentDate);
+window.addEventListener('load', setCurrentDate);
+</script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking Account · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li class="active">
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Checking Account</h1>
+                        <p>Manage your everyday spending account</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search transactions...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Account Hero Section -->
+            <div class="account-hero">
+                <div class="account-hero-content">
+                    <div class="account-badge">Primary Account</div>
+                    <div class="account-type">
+                        <i class="fas fa-wallet"></i>
+                        <span>Premium Checking</span>
+                    </div>
+                    <div class="account-balance-large">
+                        <span class="currency">$</span>
+                        <span class="amount">645,432.10</span>
+                    </div>
+                    <div class="account-number">
+                        Account Number: **** **** **** 1234
+                        <button class="copy-btn" onclick="copyAccountNumber()">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="account-hero-actions">
+                    <button class="action-btn-large primary" onclick="location.href='transfer.html'">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Money
+                    </button>
+                    <button class="action-btn-large" onclick="showDepositModal()">
+                        <i class="fas fa-download"></i>
+                        Deposit
+                    </button>
+                    <button class="action-btn-large" onclick="showWithdrawModal()">
+                        <i class="fas fa-upload"></i>
+                        Withdraw
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Stats Grid -->
+            <div class="account-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Available Balance</span>
+                        <span class="stat-value">$645,432.10</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Pending Transactions</span>
+                        <span class="stat-value">$145.67</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Monthly Spending</span>
+                        <span class="stat-value">$2,345.00</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percent"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-label">Interest Rate</span>
+                        <span class="stat-value">0.01%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions Row -->
+            <div class="quick-actions-row">
+                <button class="quick-action-item" onclick="location.href='transfer.html'">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Transfer</span>
+                </button>
+                <button class="quick-action-item" onclick="showScheduleModal()">
+                    <i class="fas fa-clock"></i>
+                    <span>Schedule</span>
+                </button>
+                <button class="quick-action-item" onclick="showStatementsModal()">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Statements</span>
+                </button>
+                <button class="quick-action-item" onclick="showSettingsModal()">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="account-transactions">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="transactions.html" class="view-all-link">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="transactions-list-compact">
+                    <div class="transaction-row">
+                        <div class="transaction-icon payment">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Amazon.com</div>
+                            <div class="transaction-date">Apr 04, 2024</div>
+                        </div>
+                        <div class="transaction-amount negative">-$89.99</div>
+                    </div>
+
+                    <div class="transaction-row">
+                        <div class="transaction-icon transfer">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Transfer to Sarah Johnson</div>
+                            <div class="transaction-date">Apr 02, 2024</div>
+                        </div>
+                        <div class="transaction-amount negative">-$250.00</div>
+                    </div>
+
+                    <div class="transaction-row">
+                        <div class="transaction-icon deposit">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Salary Deposit - ABC Corp</div>
+                            <div class="transaction-date">Mar 14, 2024</div>
+                        </div>
+                        <div class="transaction-amount positive">+$3,500.00</div>
+                    </div>
+
+                    <div class="transaction-row">
+                        <div class="transaction-icon bill">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <div class="transaction-title">Electric Company</div>
+                            <div class="transaction-date">Mar 12, 2024</div>
+                        </div>
+                        <div class="transaction-amount negative pending">-$145.67</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Details Grid -->
+            <div class="details-grid">
+                <div class="details-card">
+                    <h3>Account Details</h3>
+                    <div class="details-list">
+                        <div class="detail-item">
+                            <span class="detail-label">Account Type</span>
+                            <span class="detail-value">Premium Checking</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Account Number</span>
+                            <span class="detail-value">****6541</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Us Routing Number</span>
+                            <span class="detail-value">0800 783 5263</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Opened On</span>
+                            <span class="detail-value">January 15, 2009</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-card">
+                    <h3>Limits & Features</h3>
+                    <div class="details-list">
+                        <div class="detail-item">
+                            <span class="detail-label">Daily Withdrawal Limit</span>
+                            <span class="detail-value">$2,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Daily Transfer Limit</span>
+                            <span class="detail-value">$5,000</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Overdraft Protection</span>
+                            <span class="detail-value">Active</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Monthly Fee</span>
+                            <span class="detail-value">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-card">
+                    <h3>Linked Cards</h3>
+                    <div class="linked-cards">
+                        <div class="linked-card">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <div class="card-name">Visa Debit Card</div>
+                                <div class="card-number">**** 1234</div>
+                            </div>
+                            <button class="card-action" onclick="location.href='cards.html'">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="linked-card">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <div class="card-name">Premium Rewards Card</div>
+                                <div class="card-number">**** 7235</div>
+                            </div>
+                            <button class="card-action" onclick="location.href='cards.html'">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-premium" id="depositModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Make a Deposit</h2>
+                <button class="modal-close" onclick="closeModal('depositModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center; color: #64748B; padding: 20px;">
+                    You would be able to make deposits via mobile check deposit, wire transfer, or direct deposit.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal('depositModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-premium" id="withdrawModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Make a Withdrawal</h2>
+                <button class="modal-close" onclick="closeModal('withdrawModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center; color: #64748B; padding: 20px;">
+                    You would be able to withdraw funds via ATM, teller, or transfer to external account.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal('withdrawModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Modal functions
+        function showDepositModal() {
+            document.getElementById('depositModal').classList.add('show');
+        }
+
+        function showWithdrawModal() {
+            document.getElementById('withdrawModal').classList.add('show');
+        }
+
+        function showScheduleModal() {
+            alert('Schedule payment feature (demo)');
+        }
+
+        function showStatementsModal() {
+            location.href = 'statements.html';
+        }
+
+        function showSettingsModal() {
+            alert('Account settings (demo)');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Copy account number
+        function copyAccountNumber() {
+            const accountNumber = '**** **** **** 1234';
+            navigator.clipboard.writeText(accountNumber);
+            
+            const copyBtn = document.querySelector('.copy-btn');
+            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+            }, 1500);
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-premium')) {
+                event.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Settings</h1>
+                        <p>Manage your account preferences and security</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search settings...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Settings Categories -->
+            <div class="settings-categories">
+                <button class="category-tab active" onclick="switchSettingsTab('profile')">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </button>
+                <button class="category-tab" onclick="switchSettingsTab('security')">
+                    <i class="fas fa-shield-alt"></i>
+                    Security
+                </button>
+                <button class="category-tab" onclick="switchSettingsTab('notifications')">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </button>
+                <button class="category-tab" onclick="switchSettingsTab('privacy')">
+                    <i class="fas fa-lock"></i>
+                    Privacy
+                </button>
+                <button class="category-tab" onclick="switchSettingsTab('preferences')">
+                    <i class="fas fa-sliders-h"></i>
+                    Preferences
+                </button>
+            </div>
+
+            <!-- Profile Settings Section -->
+            <div id="profile-settings" class="settings-section active">
+                <div class="settings-header">
+                    <h2>Profile Information</h2>
+                    <p>Update your personal information and contact details</p>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Profile Picture Card -->
+                    <div class="settings-card profile-picture-card">
+                        <h3>Profile Picture</h3>
+                        <div class="profile-picture-container">
+                            <div class="profile-picture-large">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                            </div>
+                            <div class="profile-picture-actions">
+                                <button class="upload-btn" onclick="uploadPhoto()">
+                                    <i class="fas fa-upload"></i>
+                                    Upload Photo
+                                </button>
+                                <button class="remove-btn" onclick="removePhoto()">
+                                    <i class="fas fa-trash"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information Card -->
+                    <div class="settings-card">
+                        <h3>Personal Information</h3>
+                        <form id="profileForm" class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" value="John" id="firstName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" value="Doe" id="lastName">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" value="john.doe@example.com" id="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" value="(555) 123-4567" id="phone">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-calendar"></i>
+                                    <input type="date" value="1990-01-01" id="dob">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="save-btn">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Address Information Card -->
+                    <div class="settings-card">
+                        <h3>Address Information</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Street Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <input type="text" value="123 Main St" id="street">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" value="New York" id="city">
+                                </div>
+                                <div class="form-group">
+                                    <label>State</label>
+                                    <input type="text" value="NY" id="state">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ZIP Code</label>
+                                    <input type="text" value="10001" id="zip">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <input type="text" value="United States" id="country">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Settings Section -->
+            <div id="security-settings" class="settings-section">
+                <div class="settings-header">
+                    <h2>Security Settings</h2>
+                    <p>Manage your password and security preferences</p>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Change Password Card -->
+                    <div class="settings-card">
+                        <h3>Change Password</h3>
+                        <form id="passwordForm" class="settings-form">
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <div class="input-wrapper password">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Enter current password" id="currentPassword">
+                                    <button class="toggle-password" onclick="togglePassword('currentPassword')">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <div class="input-wrapper password">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Enter new password" id="newPassword">
+                                    <button class="toggle-password" onclick="togglePassword('newPassword')">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-requirements">
+                                    <p>Password must contain:</p>
+                                    <ul>
+                                        <li class="requirement" id="length">At least 8 characters</li>
+                                        <li class="requirement" id="uppercase">One uppercase letter</li>
+                                        <li class="requirement" id="number">One number</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <div class="input-wrapper password">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Confirm new password" id="confirmPassword">
+                                    <button class="toggle-password" onclick="togglePassword('confirmPassword')">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="password-strength-meter">
+                                <div class="strength-label">
+                                    <span>Password Strength</span>
+                                    <span id="strengthText">Weak</span>
+                                </div>
+                                <div class="strength-bars">
+                                    <div class="bar" id="bar1"></div>
+                                    <div class="bar" id="bar2"></div>
+                                    <div class="bar" id="bar3"></div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="save-btn">
+                                <i class="fas fa-key"></i>
+                                Update Password
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Two-Factor Authentication Card -->
+                    <div class="settings-card">
+                        <h3>Two-Factor Authentication</h3>
+                        <p class="setting-description">Add an extra layer of security to your account</p>
+
+                        <div class="twofa-status">
+                            <div class="status-icon disabled">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="status-info">
+                                <span class="status-label">Status</span>
+                                <span class="status-value disabled">Disabled</span>
+                            </div>
+                        </div>
+
+                        <div class="twofa-methods">
+                            <h4>Choose authentication method</h4>
+                            
+                            <label class="method-radio">
+                                <input type="radio" name="2fa" checked>
+                                <span class="radio-custom"></span>
+                                <span class="method-info">
+                                    <span class="method-name">SMS Authentication</span>
+                                    <span class="method-desc">Receive codes via text message</span>
+                                </span>
+                            </label>
+
+                            <label class="method-radio">
+                                <input type="radio" name="2fa">
+                                <span class="radio-custom"></span>
+                                <span class="method-info">
+                                    <span class="method-name">Authenticator App</span>
+                                    <span class="method-desc">Use Google Authenticator or similar</span>
+                                </span>
+                            </label>
+
+                            <label class="method-radio">
+                                <input type="radio" name="2fa">
+                                <span class="radio-custom"></span>
+                                <span class="method-info">
+                                    <span class="method-name">Email Authentication</span>
+                                    <span class="method-desc">Receive codes via email</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <button class="enable-btn" onclick="enable2FA()">
+                            <i class="fas fa-shield-alt"></i>
+                            Enable 2FA
+                        </button>
+                    </div>
+
+                    <!-- Login History Card -->
+                    <div class="settings-card">
+                        <h3>Recent Login Activity</h3>
+                        <div class="login-history">
+                            <div class="login-item current">
+                                <div class="device-info">
+                                    <i class="fas fa-laptop"></i>
+                                    <div>
+                                        <span class="device-name">Chrome on Windows</span>
+                                        <span class="device-location">New York, NY</span>
+                                    </div>
+                                </div>
+                                <span class="login-time">Now</span>
+                            </div>
+
+                            <div class="login-item">
+                                <div class="device-info">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <div>
+                                        <span class="device-name">Safari on iPhone</span>
+                                        <span class="device-location">New York, NY</span>
+                                    </div>
+                                </div>
+                                <span class="login-time">Yesterday</span>
+                            </div>
+
+                            <div class="login-item">
+                                <div class="device-info">
+                                    <i class="fas fa-laptop"></i>
+                                    <div>
+                                        <span class="device-name">Firefox on Mac</span>
+                                        <span class="device-location">New York, NY</span>
+                                    </div>
+                                </div>
+                                <span class="login-time">Mar 14, 2024</span>
+                            </div>
+                        </div>
+                        <a href="#" class="view-all-link" onclick="showAllDevices()">
+                            View all devices
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings Section -->
+            <div id="notification-settings" class="settings-section">
+                <div class="settings-header">
+                    <h2>Notification Preferences</h2>
+                    <p>Choose how you want to receive notifications</p>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Email Notifications Card -->
+                    <div class="settings-card">
+                        <h3>Email Notifications</h3>
+                        <div class="notification-options">
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Transaction alerts</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Security alerts</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Marketing promotions</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Monthly statements</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Newsletter</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- SMS Notifications Card -->
+                    <div class="settings-card">
+                        <h3>SMS Notifications</h3>
+                        <div class="notification-options">
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Large transaction alerts (>$500)</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Login notifications</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Low balance alerts</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">OTP verification</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Push Notifications Card -->
+                    <div class="settings-card">
+                        <h3>Push Notifications</h3>
+                        <div class="notification-options">
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Mobile app notifications</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Browser notifications</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-schedule">
+                            <h4>Quiet hours</h4>
+                            <div class="schedule-inputs">
+                                <input type="time" value="22:00" id="quietStart">
+                                <span>to</span>
+                                <input type="time" value="08:00" id="quietEnd">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button class="save-btn large" onclick="saveNotifications()">
+                        <i class="fas fa-save"></i>
+                        Save Notification Preferences
+                    </button>
+                </div>
+            </div>
+
+            <!-- Privacy Settings Section -->
+            <div id="privacy-settings" class="settings-section">
+                <div class="settings-header">
+                    <h2>Privacy Settings</h2>
+                    <p>Control your data and privacy preferences</p>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Data Sharing Card -->
+                    <div class="settings-card">
+                        <h3>Data Sharing</h3>
+                        <div class="privacy-options">
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Share data with affiliates</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Allow targeted advertising</span>
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Participate in market research</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Account Privacy Card -->
+                    <div class="settings-card">
+                        <h3>Account Privacy</h3>
+                        <div class="privacy-options">
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Show account on statements</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+
+                            <label class="toggle-switch">
+                                <span class="toggle-label">Hide sensitive information</span>
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="data-download">
+                            <h4>Download your data</h4>
+                            <p>Get a copy of your account data</p>
+                            <button class="download-data-btn" onclick="downloadData()">
+                                <i class="fas fa-download"></i>
+                                Request Data Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Delete Account Card -->
+                    <div class="settings-card danger">
+                        <h3>Delete Account</h3>
+                        <p class="warning-text">Once you delete your account, there is no going back. Please be certain.</p>
+                        <button class="delete-btn" onclick="confirmDelete()">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-premium" id="successModal">
+        <div class="modal-content success">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Success!</h2>
+            <p id="successMessage">Your changes have been saved.</p>
+            <button class="btn-primary" onclick="closeModal('successModal')">Close</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-premium" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="confirmTitle">Confirm Action</h2>
+                <button class="modal-close" onclick="closeModal('confirmModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+                <button class="btn-primary" onclick="proceedAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Switch between settings tabs
+        function switchSettingsTab(tab) {
+            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            document.querySelectorAll('.settings-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            document.getElementById(tab + '-settings').classList.add('active');
+        }
+
+        // Toggle password visibility
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.type === 'password' ? 'text' : 'password';
+            field.type = type;
+            
+            const icon = event.currentTarget.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        }
+
+        // Password strength checker
+        document.getElementById('newPassword').addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            
+            // Check length
+            if (password.length >= 8) {
+                strength++;
+                document.getElementById('length').classList.add('met');
+            } else {
+                document.getElementById('length').classList.remove('met');
+            }
+            
+            // Check uppercase
+            if (/[A-Z]/.test(password)) {
+                strength++;
+                document.getElementById('uppercase').classList.add('met');
+            } else {
+                document.getElementById('uppercase').classList.remove('met');
+            }
+            
+            // Check number
+            if (/[0-9]/.test(password)) {
+                strength++;
+                document.getElementById('number').classList.add('met');
+            } else {
+                document.getElementById('number').classList.remove('met');
+            }
+            
+            // Update strength meter
+            const bars = document.querySelectorAll('.strength-bars .bar');
+            const strengthText = document.getElementById('strengthText');
+            
+            bars.forEach((bar, index) => {
+                if (index < strength) {
+                    bar.classList.add('active');
+                } else {
+                    bar.classList.remove('active');
+                }
+            });
+            
+            if (strength === 1) {
+                strengthText.textContent = 'Weak';
+                bars[0].style.background = '#EF4444';
+            } else if (strength === 2) {
+                strengthText.textContent = 'Medium';
+                bars[0].style.background = '#F59E0B';
+                bars[1].style.background = '#F59E0B';
+            } else if (strength === 3) {
+                strengthText.textContent = 'Strong';
+                bars[0].style.background = '#10B981';
+                bars[1].style.background = '#10B981';
+                bars[2].style.background = '#10B981';
+            } else {
+                strengthText.textContent = 'Weak';
+            }
+        });
+
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showSuccess('Profile updated successfully!');
+        });
+
+        // Password form submission
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newPass = document.getElementById('newPassword').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+            
+            if (newPass !== confirmPass) {
+                showError('Passwords do not match!');
+                return;
+            }
+            
+            if (newPass.length < 8) {
+                showError('Password must be at least 8 characters!');
+                return;
+            }
+            
+            showSuccess('Password changed successfully!');
+            this.reset();
+        });
+
+        // Show success message
+        function showSuccess(message) {
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('successModal').classList.add('show');
+        }
+
+        // Show error message
+        function showError(message) {
+            alert(message); // Simple error for demo
+        }
+
+        // Modal functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Enable 2FA
+        function enable2FA() {
+            document.getElementById('confirmTitle').textContent = 'Enable Two-Factor Authentication';
+            document.getElementById('confirmMessage').textContent = 'This will enhance your account security. Continue?';
+            document.getElementById('confirmModal').classList.add('show');
+        }
+
+        // Confirm delete account
+        function confirmDelete() {
+            document.getElementById('confirmTitle').textContent = 'Delete Account';
+            document.getElementById('confirmMessage').textContent = 'This action cannot be undone. All your data will be permanently deleted. Are you absolutely sure?';
+            document.getElementById('confirmModal').classList.add('show');
+        }
+
+        // Proceed with confirmed action
+        function proceedAction() {
+            closeModal('confirmModal');
+            showSuccess('Action completed successfully!');
+        }
+
+        // Upload photo
+        function uploadPhoto() {
+            showSuccess('Photo upload feature (demo)');
+        }
+
+        // Remove photo
+        function removePhoto() {
+            showSuccess('Photo removed (demo)');
+        }
+
+        // Show all devices
+        function showAllDevices() {
+            showSuccess('All devices view (demo)');
+        }
+
+        // Save notifications
+        function saveNotifications() {
+            showSuccess('Notification preferences saved!');
+        }
+
+        // Download data
+        function downloadData() {
+            showSuccess('Data export requested. You will receive an email when ready.');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-premium')) {
+                event.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

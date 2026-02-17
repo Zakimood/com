@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statements · NexusBank Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-premium">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-premium">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-landmark"></i>
+                    <span>NexusBank</span>
+                </div>
+                <div class="brand-tag">Private Banking</div>
+            </div>
+
+            <nav class="sidebar-nav-premium">
+                <div class="nav-section">
+                    <div class="nav-section-title">MAIN</div>
+                    <ul>
+                        <li>
+                            <a href="dashboard.html">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Transfers</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="statements.html">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Statements</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">ACCOUNTS</div>
+                    <ul>
+                        <li>
+                            <a href="checking.html">
+                                <i class="fas fa-wallet"></i>
+                                <span>Checking</span>
+                                <span class="nav-amount">$645,432</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="savings.html">
+                                <i class="fas fa-piggy-bank"></i>
+                                <span>Savings</span>
+                                <span class="nav-amount">$215,678</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Investments</span>
+                                <span class="nav-amount">$3,456,789</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">SERVICES</div>
+                    <ul>
+                        <li>
+                            <a href="cards.html">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Cards</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="paybills.html">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Pay Bills</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="settings.html">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-premium">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=0A2472&color=fff&size=128" alt="John Doe">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Premium Member</div>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn" title="Settings" onclick="location.href='settings.html'">
+                        <i class="fas fa-sliders-h"></i>
+                    </button>
+                    <button class="icon-btn" title="Logout" onclick="location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content-premium">
+            <!-- Top Navigation -->
+            <header class="top-nav-premium">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Account Statements</h1>
+                        <p>Download and manage your statements</p>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search statements...">
+                    </div>
+
+                    <button class="notification-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <button class="support-btn">
+                        <i class="far fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Account Selector -->
+            <div class="statement-account-selector">
+                <button class="account-tab active" onclick="filterStatements('all')">All Accounts</button>
+                <button class="account-tab" onclick="filterStatements('checking')">Checking</button>
+                <button class="account-tab" onclick="filterStatements('savings')">Savings</button>
+                <button class="account-tab" onclick="filterStatements('credit')">Credit Card</button>
+            </div>
+
+            <!-- Statement Filters -->
+            <div class="statement-filters">
+                <div class="filter-group">
+                    <label>Year</label>
+                    <select class="filter-select">
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Month</label>
+                    <select class="filter-select">
+                        <option>All Months</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Format</label>
+                    <select class="filter-select">
+                        <option>All Formats</option>
+                        <option>PDF</option>
+                        <option>CSV</option>
+                    </select>
+                </div>
+                <button class="apply-filters-btn">
+                    <i class="fas fa-filter"></i>
+                    Apply Filters
+                </button>
+            </div>
+
+            <!-- Statements List -->
+            <div class="statements-list">
+                <div class="statement-year">
+                    <h3>2024</h3>
+                    
+                    <div class="statement-item">
+                        <div class="statement-info">
+                            <div class="statement-month">March 2024</div>
+                            <div class="statement-account">Checking Account (****1234)</div>
+                            <div class="statement-period">Mar 1 - Mar 31, 2024</div>
+                        </div>
+                        <div class="statement-actions">
+                            <button class="statement-action" onclick="viewStatement('2024-03')">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </button>
+                            <button class="statement-action" onclick="downloadStatement('2024-03')">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </button>
+                            <button class="statement-action" onclick="downloadCSV('2024-03')">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="statement-item">
+                        <div class="statement-info">
+                            <div class="statement-month">February 2024</div>
+                            <div class="statement-account">Checking Account (****1234)</div>
+                            <div class="statement-period">Feb 1 - Feb 29, 2024</div>
+                        </div>
+                        <div class="statement-actions">
+                            <button class="statement-action" onclick="viewStatement('2024-02')">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </button>
+                            <button class="statement-action" onclick="downloadStatement('2024-02')">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </button>
+                            <button class="statement-action" onclick="downloadCSV('2024-02')">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="statement-item">
+                        <div class="statement-info">
+                            <div class="statement-month">January 2024</div>
+                            <div class="statement-account">Savings Account (****5678)</div>
+                            <div class="statement-period">Jan 1 - Jan 31, 2024</div>
+                        </div>
+                        <div class="statement-actions">
+                            <button class="statement-action" onclick="viewStatement('2024-01')">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </button>
+                            <button class="statement-action" onclick="downloadStatement('2024-01')">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </button>
+                            <button class="statement-action" onclick="downloadCSV('2024-01')">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="statement-year">
+                    <h3>2023</h3>
+                    
+                    <div class="statement-item">
+                        <div class="statement-info">
+                            <div class="statement-month">December 2023</div>
+                            <div class="statement-account">Premium Credit Card (****5678)</div>
+                            <div class="statement-period">Dec 1 - Dec 31, 2023</div>
+                        </div>
+                        <div class="statement-actions">
+                            <button class="statement-action" onclick="viewStatement('2023-12')">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </button>
+                            <button class="statement-action" onclick="downloadStatement('2023-12')">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </button>
+                            <button class="statement-action" onclick="downloadCSV('2023-12')">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="statement-item">
+                        <div class="statement-info">
+                            <div class="statement-month">November 2023</div>
+                            <div class="statement-account">Checking Account (****1234)</div>
+                            <div class="statement-period">Nov 1 - Nov 30, 2023</div>
+                        </div>
+                        <div class="statement-actions">
+                            <button class="statement-action" onclick="viewStatement('2023-11')">
+                                <i class="fas fa-eye"></i>
+                                View
+                            </button>
+                            <button class="statement-action" onclick="downloadStatement('2023-11')">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </button>
+                            <button class="statement-action" onclick="downloadCSV('2023-11')">
+                                <i class="fas fa-file-csv"></i>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Documents Section -->
+            <div class="tax-documents-section">
+                <h3>Tax Documents</h3>
+                
+                <div class="tax-item">
+                    <div class="tax-info">
+                        <i class="fas fa-file-invoice"></i>
+                        <div>
+                            <div class="tax-title">1099-INT - Interest Income</div>
+                            <div class="tax-year">Tax Year 2023</div>
+                        </div>
+                    </div>
+                    <button class="tax-download" onclick="downloadTaxDoc('1099-2023')">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                </div>
+
+                <div class="tax-item">
+                    <div class="tax-info">
+                        <i class="fas fa-file-invoice"></i>
+                        <div>
+                            <div class="tax-title">1099-DIV - Dividend Income</div>
+                            <div class="tax-year">Tax Year 2023</div>
+                        </div>
+                    </div>
+                    <button class="tax-download" onclick="downloadTaxDoc('1099-div-2023')">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Statement Preview Modal -->
+    <div class="modal-premium" id="statementModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>Statement Preview</h2>
+                <button class="modal-close" onclick="closeModal('statementModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="statement-preview">
+                    <div class="preview-header">
+                        <div class="bank-info">
+                            <i class="fas fa-landmark"></i>
+                            <span>NexusBank</span>
+                        </div>
+                        <div class="statement-date">March 2024</div>
+                    </div>
+                    
+                    <div class="preview-account">
+                        <div>Account: Checking (****1234)</div>
+                        <div>Period: Mar 1 - Mar 31, 2024</div>
+                    </div>
+
+                    <table class="preview-transactions">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 15</td>
+                                <td>Transfer to Sarah Johnson</td>
+                                <td class="negative">-$250.00</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 14</td>
+                                <td>Salary Deposit - ABC Corp</td>
+                                <td class="positive">+$3,500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 12</td>
+                                <td>Amazon.com</td>
+                                <td class="negative">-$89.99</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="preview-summary">
+                        <div class="summary-row">
+                            <span>Beginning Balance</span>
+                            <span>$2,272.09</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Deposits</span>
+                            <span class="positive">+$3,500.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Total Withdrawals</span>
+                            <span class="negative">-$339.99</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Ending Balance</span>
+                            <span>$5,432.10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('statementModal')">Close</button>
+                <button class="btn-primary" onclick="downloadStatement()">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.querySelector('.sidebar-premium').classList.toggle('active');
+        });
+
+        // Loading screen
+        setTimeout(() => {
+            document.querySelector('.premium-loader').classList.add('fade-out');
+        }, 800);
+
+        // Filter statements
+        function filterStatements(account) {
+            document.querySelectorAll('.account-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter logic would go here
+            console.log('Filtering for:', account);
+        }
+
+        // View statement
+        function viewStatement(period) {
+            document.getElementById('statementModal').classList.add('show');
+        }
+
+        // Download statement
+        function downloadStatement(period) {
+            alert('Downloading statement... (demo)');
+        }
+
+        // Download CSV
+        function downloadCSV(period) {
+            alert('Downloading CSV... (demo)');
+        }
+
+        // Download tax document
+        function downloadTaxDoc(doc) {
+            alert('Downloading tax document... (demo)');
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-premium')) {
+                event.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
