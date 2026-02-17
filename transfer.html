@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Bank Selections Styles */
+        /* Bank Selection Styles */
         .bank-type-selector {
             display: flex;
             gap: 16px;
@@ -413,6 +413,9 @@
                 </div>
             </div>
         </aside>
+
+        <!-- Sidebar Overlay (for mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- Main Content Area -->
         <main class="main-content-premium">
@@ -1470,8 +1473,100 @@ function setCurrentDate() {
 // Call when page loads
 document.addEventListener('DOMContentLoaded', setCurrentDate);
 window.addEventListener('load', setCurrentDate);
+
+// Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar-premium');
+        
+        // Create overlay if it doesn't exist
+        let overlay = document.getElementById('sidebarOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'sidebarOverlay';
+            overlay.className = 'sidebar-overlay';
+            document.body.appendChild(overlay);
+        }
+
+        // Toggle menu function
+        function toggleMenu(show) {
+            if (show) {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Open menu when toggle button is clicked
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent event bubbling
+                toggleMenu(true);
+            });
+        }
+
+        // Close menu when clicking on overlay (empty space)
+        overlay.addEventListener('click', function() {
+            toggleMenu(false);
+        });
+
+        // Close menu when clicking on any link inside sidebar
+        if (sidebar) {
+            sidebar.addEventListener('click', function(e) {
+                // Check if clicked element is a link
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    // Small delay to allow navigation before closing
+                    setTimeout(() => {
+                        toggleMenu(false);
+                    }, 150);
+                }
+            });
+
+            // Prevent clicks inside sidebar from closing when clicking on non-link elements
+            sidebar.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Close menu on escape key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                toggleMenu(false);
+            }
+        });
+
+        // Close menu when window is resized to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                toggleMenu(false);
+            }
+        });
+
+        // Optional: Close menu when swiping left on mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 100; // Minimum swipe distance
+            if (sidebar.classList.contains('active') && (touchStartX - touchEndX) > swipeThreshold) {
+                // Swiped left while menu is open - close it
+                toggleMenu(false);
+            }
+        }
+    });
 </script>
 </body>
-
 </html>
-
