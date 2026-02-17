@@ -2,114 +2,1349 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - NexusBank</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>NexusBank · Secure Client Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           NEXUSBANK LOGIN - PREMIUM DESIGN
+           ========================================================================== */
+
+        :root {
+            --primary: #0A2472;
+            --primary-dark: #051537;
+            --primary-light: #1E3A8A;
+            --secondary: #FFD700;
+            --secondary-dark: #E6C200;
+            --success: #10B981;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --dark: #0F172A;
+            --dark-light: #334155;
+            --gray: #64748B;
+            --gray-light: #94A3B8;
+            --gray-lighter: #E2E8F0;
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(10,36,114,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -50%;
+            left: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Premium Loading Screen */
+        .premium-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .premium-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .loader-logo i {
+            margin-right: 0.75rem;
+            color: var(--secondary);
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 4px;
+            background: var(--gray-lighter);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 40%;
+            background: var(--primary);
+            border-radius: 10px;
+            animation: loading 1s infinite;
+        }
+
+        @keyframes loading {
+            0% { left: -40%; }
+            100% { left: 100%; }
+        }
+
+        /* Main Container */
+        .login-container {
+            width: 100%;
+            max-width: 480px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Login Card */
+        .login-card {
+            background: var(--white);
+            border-radius: 32px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            border: 1px solid var(--gray-lighter);
+            position: relative;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 1;
+        }
+
+        /* Card Header */
+        .card-header {
+            padding: 2.5rem 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-lighter);
+            background: linear-gradient(to bottom, var(--white), var(--light));
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Card Body */
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        /* Form Steps */
+        .form-step {
+            display: block;
+        }
+
+        .form-step.hidden {
+            display: none;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 1px solid var(--gray-lighter);
+            border-radius: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10,36,114,0.1);
+        }
+
+        .form-control.error {
+            border-color: var(--danger);
+            background: rgba(239,68,68,0.05);
+        }
+
+        /* Password Input Specific */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper .form-control {
+            padding-right: 48px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .toggle-password:hover {
+            color: var(--primary);
+        }
+
+        /* Checkbox */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gray-lighter);
+            color: var(--dark);
+        }
+
+        .btn-outline:hover {
+            background: var(--light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Links */
+        .forgot-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Security Notice */
+        .security-notice {
+            background: linear-gradient(to right, rgba(10,36,114,0.02), rgba(255,215,0,0.02));
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin-top: 2rem;
+            border: 1px solid var(--gray-lighter);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .security-notice .flex {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-notice i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .security-notice strong {
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .security-notice p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-left: 2rem;
+        }
+
+        /* 2FA Section */
+        .twofa-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .twofa-option {
+            flex: 1;
+            padding: 1.25rem;
+            background: var(--light);
+            border: 2px solid var(--gray-lighter);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .twofa-option.selected {
+            border-color: var(--primary);
+            background: rgba(10,36,114,0.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .twofa-option i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .twofa-option h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .twofa-option p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Verification Code Input */
+        .code-inputs {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .code-input {
+            width: 55px;
+            height: 70px;
+            border: 2px solid var(--gray-lighter);
+            border-radius: 16px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10,36,114,0.1);
+        }
+
+        .code-input.error {
+            border-color: var(--danger);
+            background: rgba(239,68,68,0.05);
+        }
+
+        /* Timer */
+        .timer {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .timer span {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Message Container */
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .message {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid transparent;
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .message.success {
+            border-left-color: var(--success);
+        }
+
+        .message.error {
+            border-left-color: var(--danger);
+        }
+
+        .message.info {
+            border-left-color: var(--primary);
+        }
+
+        .message.success i {
+            color: var(--success);
+        }
+
+        .message.error i {
+            color: var(--danger);
+        }
+
+        .message.info i {
+            color: var(--primary);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Inactivity Warning */
+        .inactivity-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .inactivity-card {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 2.5rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--gray-lighter);
+            box-shadow: var(--shadow-xl);
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .warning-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(245,158,11,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .warning-icon i {
+            font-size: 2rem;
+            color: var(--warning);
+        }
+
+        .inactivity-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .inactivity-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--danger);
+            margin: 1rem 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-extend {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 14px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-extend:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card-header,
+            .card-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .twofa-options {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .code-input {
+                width: 45px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .message {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+    </style>
 </head>
-<body class="auth-page">
-    <div class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                <a href="index.html" class="logo">
-                    <span class="logo-icon">⚡</span>
+<body>
+    <!-- Premium Loading Screen -->
+    <div class="premium-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-landmark"></i>
+                <span>NexusBank</span>
+            </div>
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Inactivity Warning Modal -->
+    <div class="inactivity-warning hidden" id="inactivityWarning">
+        <div class="inactivity-card">
+            <div class="warning-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h3>Session Timeout</h3>
+            <p>Your session will expire due to inactivity</p>
+            <div class="countdown" id="countdown">30</div>
+            <p class="mb-3">seconds remaining</p>
+            <button class="btn-extend" id="extendSession">
+                <i class="fas fa-sync-alt"></i>
+                Extend Session
+            </button>
+        </div>
+    </div>
+
+    <!-- Message Container -->
+    <div class="message-container" id="messageContainer"></div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
                     <span class="logo-text">NexusBank</span>
-                </a>
-                <h1>Welcome Back</h1>
+                </div>
+                <h2>Welcome Back</h2>
                 <p>Please enter your credentials to access your account</p>
             </div>
-            
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="username">Email or Username</label>
-                    <input type="text" id="username" name="username" required placeholder="Enter your email or username">
+
+            <div class="card-body">
+                <!-- Step 1: Login Form -->
+                <div id="step1" class="form-step">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <div class="password-wrapper">
+                                <i class="fas fa-lock" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--gray);"></i>
+                                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group flex items-center gap-2">
+                            <input type="checkbox" id="rememberDevice">
+                            <label for="rememberDevice" class="checkbox-wrapper">
+                                <span>Remember this device</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="loginBtn">
+                            <span id="loginText">Sign In</span>
+                            <div class="loading-spinner" id="loginSpinner"></div>
+                        </button>
+
+                        <a href="#" class="forgot-link" id="forgotPassword">Forgot your password?</a>
+                    </form>
                 </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-input-wrapper">
-                        <input type="password" id="password" name="password" required placeholder="Enter your password">
-                        <button type="button" class="toggle-password" onclick="togglePassword('password')">👁️</button>
+
+                <!-- Step 2: 2FA Verification -->
+                <div id="step2" class="form-step hidden">
+                    <a href="#" class="back-link" id="backToLogin">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Login
+                    </a>
+
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Two-Factor Authentication</h3>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">Choose how to receive your verification code</p>
+
+                    <!-- 2FA Options -->
+                    <div class="twofa-options">
+                        <div class="twofa-option selected" id="emailOption" onclick="select2FAMethod('email')">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email</h4>
+                            <p>Get code via email</p>
+                        </div>
+                        <div class="twofa-option" id="smsOption" onclick="select2FAMethod('sms')">
+                            <i class="fas fa-phone-alt"></i>
+                            <h4>SMS</h4>
+                            <p>Get code via text</p>
+                        </div>
                     </div>
+
+                    <!-- Verification Message -->
+                    <p id="verificationMessage" style="color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem;">
+                        We've sent a 6-digit code to your email
+                    </p>
+
+                    <!-- Code Inputs -->
+                    <div class="code-inputs">
+                        <input type="text" class="code-input" id="code1" maxlength="1" onkeyup="moveToNext(this, 'code2')" onkeydown="handleBackspace(this, event)">
+                        <input type="text" class="code-input" id="code2" maxlength="1" onkeyup="moveToNext(this, 'code3')" onkeydown="handleBackspace(this, event)">
+                        <input type="text" class="code-input" id="code3" maxlength="1" onkeyup="moveToNext(this, 'code4')" onkeydown="handleBackspace(this, event)">
+                        <input type="text" class="code-input" id="code4" maxlength="1" onkeyup="moveToNext(this, 'code5')" onkeydown="handleBackspace(this, event)">
+                        <input type="text" class="code-input" id="code5" maxlength="1" onkeyup="moveToNext(this, 'code6')" onkeydown="handleBackspace(this, event)">
+                        <input type="text" class="code-input" id="code6" maxlength="1" onkeydown="handleBackspace(this, event)">
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="timer">
+                        Code expires in <span id="timer">02:00</span>
+                    </div>
+
+                    <!-- Resend Link -->
+                    <div class="text-center">
+                        <a href="#" id="resendCode" style="color: var(--primary); font-size: 0.9rem;">Resend Code</a>
+                    </div>
+
+                    <button class="btn btn-primary mt-4" id="verifyBtn" onclick="verifyCode()">
+                        Verify & Continue
+                    </button>
                 </div>
-                
-                <div class="form-options">
-                    <label class="checkbox-container">
-                        <input type="checkbox" name="remember">
-                        <span class="checkmark"></span>
-                        Remember me
-                    </label>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+
+                <!-- Security Notice -->
+                <div class="security-notice">
+                    <div class="flex">
+                        <i class="fas fa-shield-alt"></i>
+                        <strong>Enhanced Security Active</strong>
+                    </div>
+                    <p>Your connection is protected by 256-bit TLS encryption. All login attempts are monitored and recorded for security purposes.</p>
                 </div>
-                
-                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                
-                <div class="auth-footer">
-                    <p>Don't have an account? <a href="register.html">Register here</a></p>
+
+                <div class="text-center mt-4">
+                    <a href="index.html" style="color: var(--gray); font-size: 0.9rem;">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Return to Homepage
+                    </a>
                 </div>
-            </form>
-            
-            <div class="security-badge">
-                <span>🔒 Secured with 256-bit SSL</span>
-            </div>
-        </div>
-        
-        <div class="auth-info">
-            <div class="info-content">
-                <h2>Secure Banking</h2>
-                <ul>
-                    <li>✓ Multi-factor authentication</li>
-                    <li>✓ Biometric login support</li>
-                    <li>✓ Real-time fraud monitoring</li>
-                    <li>✓ Encrypted transactions</li>
-                </ul>
             </div>
         </div>
     </div>
-    
-    <div id="messageContainer" class="message-container"></div>
-    
-    <script src="js/validation.js"></script>
+
     <script>
-        function togglePassword(fieldId) {
-            const field = document.getElementById(fieldId);
-            const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
-            field.setAttribute('type', type);
-        }
-        
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Simple validation
-            if (!username || !password) {
-                showMessage('Please fill in all fields', 'error');
-                return;
-            }
-            
-            // For demo purposes - simulate login
-            if (username && password.length >= 6) {
-                showMessage('Login successful! Redirecting...', 'success');
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
-            } else {
-                showMessage('Invalid credentials. Password must be at least 6 characters.', 'error');
-            }
-        });
-        
-        function showMessage(message, type) {
-            const container = document.getElementById('messageContainer');
-            container.innerHTML = `<div class="message ${type}">${message}</div>`;
-            container.style.display = 'block';
-            
+        // ==========================================================================
+        // NEXUSBANK LOGIN - COMPLETE FUNCTIONALITY
+        // ==========================================================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Premium Loading Screen
             setTimeout(() => {
-                container.style.display = 'none';
-            }, 3000);
-        }
+                document.querySelector('.premium-loader').classList.add('fade-out');
+            }, 800);
+
+            // ==========================================================================
+            // VARIABLES
+            // ==========================================================================
+
+            // Demo credentials
+            const validCredentials = [
+                { email: "patrick.sterling@gmail.com", password: "Mylittlegirl32!" },
+                { email: "john.doe@nexusbank.com", password: "password123" },
+                { email: "sarah.johnson@nexusbank.com", password: "SecurePass2024" },
+                { email: "michael.chen@nexusbank.com", password: "Investor2024" },
+                { email: "emily.williams@nexusbank.com", password: "Wealth123!" }
+            ];
+
+            // Predefined 2FA codes (6-digit)
+            const valid2FACodes = [
+                "123456",
+                "789012",
+                "345678",
+                "901234",
+                "567890"
+            ];
+
+            // Current user email (for message display)
+            let currentUserEmail = "";
+            let current2FAMethod = "email";
+            let timerInterval;
+            let timeLeft = 120; // 2 minutes in seconds
+
+            // Inactivity timeout variables
+            let inactivityTimer;
+            const inactivityTimeout = 180000; // 3 minutes
+            let countdown = 30;
+            let countdownInterval;
+
+            // ==========================================================================
+            // MESSAGE SYSTEM
+            // ==========================================================================
+
+            window.showMessage = function(message, type) {
+                const container = document.getElementById('messageContainer');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${type}`;
+                messageDiv.innerHTML = `
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                `;
+                
+                container.appendChild(messageDiv);
+
+                setTimeout(() => {
+                    messageDiv.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.parentNode.removeChild(messageDiv);
+                        }
+                    }, 300);
+                }, 5000);
+            };
+
+            // ==========================================================================
+            // PASSWORD TOGGLE
+            // ==========================================================================
+
+            window.togglePassword = function(fieldId) {
+                const field = document.getElementById(fieldId);
+                const type = field.type === 'password' ? 'text' : 'password';
+                field.type = type;
+                
+                const icon = event.currentTarget.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            };
+
+            // ==========================================================================
+            // STEP 1: LOGIN FORM HANDLING
+            // ==========================================================================
+
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const loginText = document.getElementById('loginText');
+            const loginSpinner = document.getElementById('loginSpinner');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const rememberDevice = document.getElementById('rememberDevice').checked;
+
+                // Validate fields
+                if (!email || !password) {
+                    showMessage('Please enter both email and password', 'error');
+                    return;
+                }
+
+                if (!email.includes('@')) {
+                    showMessage('Please enter a valid email address', 'error');
+                    return;
+                }
+
+                // Show loading state
+                loginBtn.disabled = true;
+                loginText.textContent = 'Authenticating...';
+                loginSpinner.style.display = 'block';
+
+                // Simulate authentication delay
+                setTimeout(() => {
+                    // Check credentials
+                    const isValid = validCredentials.some(cred => 
+                        cred.email.toLowerCase() === email.toLowerCase() && cred.password === password
+                    );
+
+                    if (isValid) {
+                        // Successful login
+                        loginText.textContent = 'Success!';
+                        currentUserEmail = email;
+
+                        // Store remember device preference
+                        if (rememberDevice) {
+                            localStorage.setItem('nexusbank_remember', 'true');
+                            localStorage.setItem('nexusbank_lastlogin', new Date().toISOString());
+                        }
+
+                        showMessage('Authentication successful! Proceeding to 2FA...', 'success');
+
+                        // Move to 2FA step
+                        setTimeout(() => {
+                            step1.classList.add('hidden');
+                            step2.classList.remove('hidden');
+                            reset2FATimer();
+                            updateVerificationMessage();
+                            
+                            // Reset login button
+                            loginBtn.disabled = false;
+                            loginText.textContent = 'Sign In';
+                            loginSpinner.style.display = 'none';
+                            
+                            // Focus first code input
+                            document.getElementById('code1').focus();
+                        }, 1000);
+                    } else {
+                        // Failed login
+                        showMessage('Invalid email or password. Please try again.', 'error');
+                        
+                        // Reset button
+                        loginBtn.disabled = false;
+                        loginText.textContent = 'Sign In';
+                        loginSpinner.style.display = 'none';
+                    }
+                }, 1500);
+            });
+
+            // Forgot password
+            document.getElementById('forgotPassword').addEventListener('click', function(e) {
+                e.preventDefault();
+                showMessage('Password reset instructions have been sent to your email', 'info');
+            });
+
+            // Back to login
+            document.getElementById('backToLogin').addEventListener('click', function(e) {
+                e.preventDefault();
+                step2.classList.add('hidden');
+                step1.classList.remove('hidden');
+                clearInterval(timerInterval);
+                
+                // Clear code inputs
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`code${i}`).value = '';
+                }
+            });
+
+            // ==========================================================================
+            // STEP 2: 2FA HANDLING
+            // ==========================================================================
+
+            // Select 2FA method
+            window.select2FAMethod = function(method) {
+                current2FAMethod = method;
+                
+                // Update UI
+                document.getElementById('emailOption').classList.remove('selected');
+                document.getElementById('smsOption').classList.remove('selected');
+                
+                if (method === 'email') {
+                    document.getElementById('emailOption').classList.add('selected');
+                } else {
+                    document.getElementById('smsOption').classList.add('selected');
+                }
+                
+                updateVerificationMessage();
+                reset2FATimer();
+            };
+
+            function updateVerificationMessage() {
+                const messageEl = document.getElementById('verificationMessage');
+                const method = current2FAMethod === 'email' ? 'email' : 'phone number';
+                const contact = current2FAMethod === 'email' ? 
+                    currentUserEmail : 
+                    '••••••••' + currentUserEmail.slice(-4);
+                
+                messageEl.textContent = `We've sent a 6-digit code to your ${method} (${contact})`;
+            }
+
+            // Move to next input
+            window.moveToNext = function(current, nextId) {
+                if (current.value.length === 1) {
+                    document.getElementById(nextId)?.focus();
+                }
+            };
+
+            // Handle backspace
+            window.handleBackspace = function(current, event) {
+                if (event.key === 'Backspace' && current.value.length === 0) {
+                    const prev = current.previousElementSibling;
+                    if (prev) {
+                        prev.focus();
+                    }
+                }
+            };
+
+            // Reset timer
+            function reset2FATimer() {
+                clearInterval(timerInterval);
+                timeLeft = 120;
+                updateTimerDisplay();
+                
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        document.getElementById('timer').textContent = 'Expired';
+                        showMessage('Code expired. Please request a new one.', 'error');
+                    }
+                }, 1000);
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            // Verify code
+            window.verifyCode = function() {
+                // Get entered code
+                const code = Array.from({length: 6}, (_, i) => 
+                    document.getElementById(`code${i+1}`).value
+                ).join('');
+
+                // Validate all fields filled
+                if (code.length < 6) {
+                    showMessage('Please enter the complete 6-digit code', 'error');
+                    
+                    // Highlight empty fields
+                    for (let i = 1; i <= 6; i++) {
+                        const input = document.getElementById(`code${i}`);
+                        if (!input.value) {
+                            input.classList.add('error');
+                            setTimeout(() => input.classList.remove('error'), 1000);
+                        }
+                    }
+                    return;
+                }
+
+                // Check if code is valid (against predefined list)
+                if (valid2FACodes.includes(code)) {
+                    // Success - redirect to dashboard
+                    showMessage('Verification successful! Redirecting to dashboard...', 'success');
+                    
+                    // Clear timer
+                    clearInterval(timerInterval);
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    // Wrong code - show error
+                    showMessage('Invalid verification code. Please try again.', 'error');
+                    
+                    // Clear inputs
+                    for (let i = 1; i <= 6; i++) {
+                        document.getElementById(`code${i}`).value = '';
+                    }
+                    document.getElementById('code1').focus();
+                }
+            };
+
+            // Resend code
+            document.getElementById('resendCode').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Reset timer
+                reset2FATimer();
+                
+                // Clear inputs
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`code${i}`).value = '';
+                }
+                document.getElementById('code1').focus();
+                
+                // Show message
+                showMessage('New verification code sent!', 'success');
+            });
+
+            // ==========================================================================
+            // INACTIVITY TIMEOUT
+            // ==========================================================================
+
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                clearInterval(countdownInterval);
+                document.getElementById('inactivityWarning').classList.add('hidden');
+                
+                inactivityTimer = setTimeout(showInactivityWarning, inactivityTimeout);
+            }
+
+            function showInactivityWarning() {
+                const warning = document.getElementById('inactivityWarning');
+                warning.classList.remove('hidden');
+                
+                let count = 30;
+                const countdownEl = document.getElementById('countdown');
+                countdownEl.textContent = count;
+                
+                countdownInterval = setInterval(() => {
+                    count--;
+                    countdownEl.textContent = count;
+                    
+                    if (count <= 0) {
+                        clearInterval(countdownInterval);
+                        performLogout();
+                    }
+                }, 1000);
+            }
+
+            function performLogout() {
+                showMessage('Session expired due to inactivity. Please login again.', 'error');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+
+            // Extend session button
+            document.getElementById('extendSession').addEventListener('click', resetInactivityTimer);
+
+            // Activity listeners
+            const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'click', 'touchstart'];
+            activityEvents.forEach(event => {
+                document.addEventListener(event, resetInactivityTimer);
+            });
+
+            // Start inactivity timer
+            resetInactivityTimer();
+
+            // ==========================================================================
+            // REMEMBER DEVICE CHECK
+            // ==========================================================================
+
+            if (localStorage.getItem('nexusbank_remember') === 'true') {
+                document.getElementById('rememberDevice').checked = true;
+                
+                const lastLogin = localStorage.getItem('nexusbank_lastlogin');
+                if (lastLogin) {
+                    const date = new Date(lastLogin);
+                    showMessage(`Last login: ${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`, 'info');
+                }
+            }
+
+            // ==========================================================================
+            // AUTO-FOCUS ON PAGE LOAD
+            // ==========================================================================
+
+            document.getElementById('email').focus();
+        });
     </script>
 </body>
-
 </html>
